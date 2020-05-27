@@ -1,4 +1,4 @@
-// (function(){
+(function(){
 
     var path_tests;
     var path_tests_original;
@@ -82,9 +82,15 @@
             return test.Search_Terms.toLowerCase().includes(searchTerm)
         });
         path_tests = path_tests.sort(function(a,b) {
-            var aTerms = a.Search_Terms.toLowerCase();
-            var bTerms = b.Search_Terms.toLowerCase();
-            return (aTerms.indexOf(searchTerm) > bTerms.indexOf(searchTerm))
+            var aTerms = a.Search_Terms.toLowerCase().indexOf(searchTerm);
+            var bTerms = b.Search_Terms.toLowerCase().indexOf(searchTerm);
+            if (aTerms < bTerms) {
+                return -1;
+            }
+            if (aTerms > bTerms) {
+                return 1;  
+            }
+            return 0;
         });
         
         populateTests(path_tests);
@@ -151,4 +157,4 @@
     
     
     // });
-// })();
+})();
