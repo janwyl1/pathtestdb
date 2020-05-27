@@ -5,7 +5,7 @@
     var startAt = 0;
     var limit = 50;
     
-    /* Load Data */
+    // LOAD DATA
     $.ajax('pathology_tests.json', {
         type: 'GET',
         dataType: 'json',
@@ -24,7 +24,8 @@
             console.log("Error: Unable to load data. Status: %s (%s)", status, err)
         }
     })
-    
+
+    // DISPLAY DATA
     function appendTestsHTML() {
         var testsHTML = $('.tests');
         if (path_tests.length < 1) testsHTML.append('<div class="">No Tests Found</div>');
@@ -65,13 +66,18 @@
             }
         }
     }
-    
+
+    // SEARCH / MANIPULATE TESTS
     function showMoreTests(){
         if (limit < path_tests.length) {
             startAt = limit;
             limit += 50;
             appendTestsHTML(path_tests);
         }
+    }
+
+    function resetDeptDropdown() {
+        $('#departments').val('all')
     }
 
     function resetTests(){
@@ -87,6 +93,7 @@
             return test.Search_Terms.toLowerCase().includes(searchTerm)
         });
     }
+
     function sortTests() {
         var searchTerm = $('#search-inpt').val().toLowerCase();
         path_tests = path_tests.sort(function(a,b) {
@@ -104,9 +111,8 @@
             if (category.toLowerCase() === "all") return true;
             return test.Department.toLowerCase() === category.toLowerCase();
         })
-        console.log(category);
-    }  
-    
+    }
+
     function searchTests() {
         resetTests();        
         filterTests();
@@ -116,11 +122,7 @@
     }
 
 
-
-    function resetDeptDropdown() {
-        $('#departments').val('all')
-    }
-
+    // ATTACH EVENT HANDLERS
     function handleDeptDropdownChange() {
         $('#departments').on('change', function(e) {
             searchTests();
@@ -134,11 +136,13 @@
             }
         });
     }
+
     function handleSearchClick() {
         $('#search-btn').on('click', function(e) {
             searchTests()
         })
     }
+
     function handleShowMoreClick() {
         $('#show-more-btn').on('click', function(e) {
             showMoreTests()
