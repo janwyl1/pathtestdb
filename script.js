@@ -72,7 +72,7 @@
         if (limit < path_tests.length) {
             startAt = limit;
             limit += 50;
-            appendTestsHTML(path_tests);
+            appendTestsHTML();
         }
     }
 
@@ -120,6 +120,18 @@
         removeCategories()
         appendTestsHTML();
     }
+
+    // WORKING ON THIS
+    //
+    //
+    //
+
+    function hideShowMore(){
+        $('#show-more-btn').hide()
+    };
+    function showShowMore(){
+        $('#show-more-btn').show()
+    };
 
 
     // ATTACH EVENT HANDLERS

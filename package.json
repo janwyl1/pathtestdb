@@ -1,0 +1,17 @@
+{
+  "name": "pathology_tests_database",
+  "version": "1.0.0",
+  "description": "Pathology Tests Database",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server -p 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.2.0"
+  }
+}
