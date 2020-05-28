@@ -62,6 +62,7 @@ const tests_data = [
         "Turnaround": ""     
 }]
 
+// https://www.airpair.com/javascript/posts/unit-testing-ajax-requests-with-mocha
 
 describe('Pathology Tests',  function() {
     beforeEach(function() {
@@ -77,15 +78,25 @@ describe('Pathology Tests',  function() {
         this.xhr.restore();
     });
 
-  it('should be a valid json object', function(done) {
-
-    fetchData('../pathology_tests.json');
-
-    this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
-
-    console.log(path_tests)
-    assert.equal(path_tests.length, 4);
-    done()
+  describe('Fetch data', function() {
+    before(function(){
+       // TODO: Remove repeat request to fetchData, but it doesnt seem to be working
+      var path_tests = pathTestsDb.getPathTests();
+    });
+    it('should be a valid json object', function(done) {
+        pathTestsDb.fetchData('../pathology_tests.json');
+        this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
+        assert.isArray(pathTestsDb.getPathTests())
+        assert.isObject(pathTestsDb.getPathTests()[0]);
+        done()
+    });
+    it('should contain 4 items', function(done) {
+        pathTestsDb.fetchData('../pathology_tests.json');
+        this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
+        assert.equal(pathTestsDb.getPathTests().length, 4);
+        done()
+    });
   });
+
 });
 

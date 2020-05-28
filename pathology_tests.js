@@ -1,10 +1,14 @@
-// (function(){
+var pathTestsDb = (function() {
 
     var path_tests;
     var path_tests_original;
     var startAt = 0;
     var limit = 50;
     
+    function getPathTests() {
+        return path_tests;
+    }
+
     // LOAD DATA
     function fetchData(dataUrl) {
         $.ajax(dataUrl, {
@@ -166,8 +170,10 @@
     }
 
 
-    // if(typeof exports !== 'undefined') {
-    //     exports.fetchData = fetchData;
-    // }
+    // Revealing module pattern. Expose these methods, prevent global scope pollution.
+    return {
+        fetchData: fetchData,
+        getPathTests: getPathTests
+    }
 
-// })();
+})();
