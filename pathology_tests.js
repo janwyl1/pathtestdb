@@ -1,4 +1,4 @@
-(function(){
+// (function(){
 
     var path_tests;
     var path_tests_original;
@@ -6,24 +6,28 @@
     var limit = 50;
     
     // LOAD DATA
-    $.ajax('pathology_tests.json', {
-        type: 'GET',
-        dataType: 'json',
-        success: function(data) {
-            path_tests = data;
-            path_tests_original = data;
-            resetDeptDropdown();
-            handleSearchClick()
-            handleShowMoreClick();
-            handleSearchOnEnter();
-            handleDeptDropdownChange();
-            appendTestsHTML();
-        },
-        error: function(req, status, err) {
-            $('.tests').append('<div class="">Unable to fetch data</div>')
-            console.log("Error: Unable to load data. Status: %s (%s)", status, err)
-        }
-    })
+    function fetchData(dataUrl) {
+        $.ajax(dataUrl, {
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                path_tests = data;
+                path_tests_original = data;
+                resetDeptDropdown();
+                handleSearchClick()
+                handleShowMoreClick();
+                handleSearchOnEnter();
+                handleDeptDropdownChange();
+                appendTestsHTML();
+            },
+            error: function(req, status, err) {
+                $('.tests').append('<div class="">Unable to fetch data</div>')
+                console.log("Error: Unable to load data. Status: %s (%s)", status, err)
+            }
+        })
+    }
+    fetchData('pathology_tests.json');
+
 
     // DISPLAY DATA
     function appendTestsHTML() {
@@ -161,4 +165,9 @@
         })
     }
 
-})();
+
+    // if(typeof exports !== 'undefined') {
+    //     exports.fetchData = fetchData;
+    // }
+
+// })();
