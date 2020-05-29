@@ -5,6 +5,7 @@ var pathTestsDb = (function() {
     var startAt = 0;
     var limit = 50;
     
+    // Getter required for exposing path_tests
     function getPathTests() {
         return path_tests;
     }
@@ -32,47 +33,52 @@ var pathTestsDb = (function() {
     }
     fetchData('pathology_tests.json');
 
-
     // DISPLAY DATA
     function appendTestsHTML() {
         var testsHTML = $('.tests');
-        if (path_tests.length < 1) testsHTML.append('<div class="">No Tests Found</div>');
+        var htmlStr = "";
+        if (path_tests.length < 1) {
+            testsHTML.append('<div class="">No Tests Found</div>');
+            hideShowMore(); 
+        } 
+
+        toggleShowMore();
 
         for (var i = startAt; i < limit; i++) {
             if (path_tests[i]) {
-                testsHTML.append('<div class="accordion-header">');
-                testsHTML.append('<div class="accordion-header-left">')
-                if (path_tests[i].Name) testsHTML.append('<h2>' + path_tests[i].Name + '</h2>')
-                if (path_tests[i].Code) testsHTML.append('<h5>' + path_tests[i].Code + '</h5>')
-                testsHTML.append('</div>');
-                testsHTML.append('<div class="accordion-header-right">');
-                if (path_tests[i].Department) testsHTML.append('<p>' + path_tests[i].Department + '</p>');
-                if (path_tests[i].Container) testsHTML.append('<p>' + path_tests[i].Container + '</p>');   
-                testsHTML.append('</div>');
-                testsHTML.append('</div>');
-
-                testsHTML.append('<div class="accordion-body">');
-                testsHTML.append('<dl>');
-                if (path_tests[i].Name) testsHTML.append('<dt>Name</dt>');
-                if (path_tests[i].Name) testsHTML.append('<dd>' + path_tests[i].Name + '</dd>');
-                if (path_tests[i].Code) testsHTML.append('<dt>Code</dt>');
-                if (path_tests[i].Code) testsHTML.append('<dd>' + path_tests[i].Code + '</dd>');       
-                if (path_tests[i].Sample_Type) testsHTML.append('<dt>Specimen</dt>');
-                if (path_tests[i].Sample_Type) testsHTML.append('<dd>' + path_tests[i].Sample_Type + '</dd>');
-                if (path_tests[i].Container) testsHTML.append('<dt>Container</dt>');
-                if (path_tests[i].Container) testsHTML.append('<dd>' + path_tests[i].Container + '</dd>');
-                if (path_tests[i].Department) testsHTML.append('<dt>Department</dt>');
-                if (path_tests[i].Department) testsHTML.append('<dd>' + path_tests[i].Department + '</dd>');
-                if (path_tests[i].Aliases) testsHTML.append('<dt>Known as</dt>');
-                if (path_tests[i].Aliases) testsHTML.append('<dd>' + path_tests[i].Aliases + '</dd>');
-                if (path_tests[i].Comments) testsHTML.append('<dt>Comments</dt>');
-                if (path_tests[i].Comments) testsHTML.append('<dd>' + path_tests[i].Comments + '</dd>');
-                if (path_tests[i].Turnaround) testsHTML.append('<dt>Turnaround</dt>');
-                if (path_tests[i].Turnaround) testsHTML.append('<dd>' + path_tests[i].Turnaround + '</dd>');
-                testsHTML.append('</dl>');
-                testsHTML.append('</div>');
+                htmlStr += '<div class="accordion-header">';
+                htmlStr += '<div class="accordion-header-left">';
+                if (path_tests[i].Name) htmlStr += '<h2>' + path_tests[i].Name + '</h2>'
+                if (path_tests[i].Code) htmlStr += '<h5>' + path_tests[i].Code + '</h5>'
+                htmlStr+='</div>';
+                htmlStr+='<div class="accordion-header-right">';
+                if (path_tests[i].Department) htmlStr+='<p>' + path_tests[i].Department + '</p>';
+                if (path_tests[i].Container) htmlStr+='<p>' + path_tests[i].Container + '</p>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='<div class="accordion-body">';
+                htmlStr+='<dl>';
+                if (path_tests[i].Name) htmlStr+='<dt>Name</dt>';
+                if (path_tests[i].Name) htmlStr+='<dd>' + path_tests[i].Name + '</dd>';
+                if (path_tests[i].Code) htmlStr+='<dt>Code</dt>';
+                if (path_tests[i].Code) htmlStr+='<dd>' + path_tests[i].Code + '</dd>';       
+                if (path_tests[i].Sample_Type) htmlStr+='<dt>Specimen</dt>';
+                if (path_tests[i].Sample_Type) htmlStr+='<dd>' + path_tests[i].Sample_Type + '</dd>';
+                if (path_tests[i].Container) htmlStr+='<dt>Container</dt>';
+                if (path_tests[i].Container) htmlStr+='<dd>' + path_tests[i].Container + '</dd>';
+                if (path_tests[i].Department) htmlStr+='<dt>Department</dt>';
+                if (path_tests[i].Department) htmlStr+='<dd>' + path_tests[i].Department + '</dd>';
+                if (path_tests[i].Aliases) htmlStr+='<dt>Known as</dt>';
+                if (path_tests[i].Aliases) htmlStr+='<dd>' + path_tests[i].Aliases + '</dd>';
+                if (path_tests[i].Comments) htmlStr+='<dt>Comments</dt>';
+                if (path_tests[i].Comments) htmlStr+='<dd>' + path_tests[i].Comments + '</dd>';
+                if (path_tests[i].Turnaround) htmlStr+='<dt>Turnaround</dt>';
+                if (path_tests[i].Turnaround) htmlStr+='<dd>' + path_tests[i].Turnaround + '</dd>';
+                htmlStr+='</dl>';
+                htmlStr+='</div>';
             }
         }
+        testsHTML.append(htmlStr);
     }
 
     // SEARCH / MANIPULATE TESTS
@@ -95,44 +101,39 @@ var pathTestsDb = (function() {
         $('.tests').empty();
     }
 
-    function filterTests() {
-        var searchTerm = $('#search-inpt').val().toLowerCase();
-        path_tests = path_tests.filter(function(test){
-            return test.Search_Terms.toLowerCase().includes(searchTerm)
+    function filterTests(tests, searchTerm) {
+        return tests.filter(function(test){
+            return test.Search_Terms.toLowerCase().includes(searchTerm.toLowerCase())
         });
     }
 
-    function sortTests() {
-        var searchTerm = $('#search-inpt').val().toLowerCase();
-        path_tests = path_tests.sort(function(a,b) {
-            var aTerms = a.Search_Terms.toLowerCase().indexOf(searchTerm);
-            var bTerms = b.Search_Terms.toLowerCase().indexOf(searchTerm);
+    function sortTests(tests, searchTerm) {
+        return tests.sort(function(a,b) {
+            var aTerms = a.Search_Terms.toLowerCase().indexOf(searchTerm.toLowerCase());
+            var bTerms = b.Search_Terms.toLowerCase().indexOf(searchTerm.toLowerCase());
             if (aTerms < bTerms) return -1;
             if (aTerms > bTerms) return 1;  
             return 0;
         });
     }
 
-    function removeCategories() {
-        var category = $('#departments').val();
-        path_tests = path_tests.filter(function(test){
+    function removeCategories(tests, category) {
+        return tests.filter(function(test){
             if (category.toLowerCase() === "all") return true;
             return test.Department.toLowerCase() === category.toLowerCase();
         })
     }
 
     function searchTests() {
+        var searchTerm = $('#search-inpt').val().toLowerCase();
+        var category = $('#departments').val();
+        
         resetTests();        
-        filterTests();
-        sortTests();
-        removeCategories()
+        path_tests = filterTests(path_tests, searchTerm);
+        path_tests = sortTests(path_tests, searchTerm);
+        path_tests = removeCategories(path_tests, category)
         appendTestsHTML();
     }
-
-    // WORKING ON THIS
-    //
-    //
-    //
 
     function hideShowMore(){
         $('#show-more-btn').hide()
@@ -140,7 +141,13 @@ var pathTestsDb = (function() {
     function showShowMore(){
         $('#show-more-btn').show()
     };
-
+    function toggleShowMore() {
+        if (path_tests.length >= 1 && limit < path_tests.length) {
+            showShowMore();
+        } else {
+            hideShowMore();
+        }
+    }
 
     // ATTACH EVENT HANDLERS
     function handleDeptDropdownChange() {
@@ -173,7 +180,10 @@ var pathTestsDb = (function() {
     // Revealing module pattern. Expose these methods, prevent global scope pollution.
     return {
         fetchData: fetchData,
-        getPathTests: getPathTests
+        getPathTests: getPathTests,
+        filterTests: filterTests,
+        sortTests: sortTests,
+        removeCategories: removeCategories
     }
 
 })();

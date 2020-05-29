@@ -62,7 +62,7 @@ const tests_data = [
         "Turnaround": ""     
 }]
 
-// https://www.airpair.com/javascript/posts/unit-testing-ajax-requests-with-mocha
+
 
 describe('Pathology Tests',  function() {
     beforeEach(function() {
@@ -79,10 +79,6 @@ describe('Pathology Tests',  function() {
     });
 
   describe('Fetch data', function() {
-    before(function(){
-       // TODO: Remove repeat request to fetchData, but it doesnt seem to be working
-      var path_tests = pathTestsDb.getPathTests();
-    });
     it('should be a valid json object', function(done) {
         pathTestsDb.fetchData('../pathology_tests.json');
         this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
@@ -98,5 +94,61 @@ describe('Pathology Tests',  function() {
     });
   });
 
-});
+  describe('Filter Tests', function() {
+    it('should be an array of 2 items', function(done){
+      pathTestsDb.fetchData('../pathology_tests.json');
+      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      assert.isArray(filteredTests)
+      assert.equal(filteredTests.length, 2)
+      done();
+    })
+    it('first item should be FIB4', function(done){
+      pathTestsDb.fetchData('../pathology_tests.json');
+      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      assert.equal(filteredTests[0].Code, "FIB4/FBC")
+      done();
+    })
+  })
 
+  describe('Sort Tests', function() {
+    it('should be an array of 2 items', function(done){
+      pathTestsDb.fetchData('../pathology_tests.json');
+      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC") 
+      assert.isArray(sortedTests)
+      assert.equal(sortedTests.length, 2)
+      done();
+    })
+    it('first item should be FBC', function(done){
+      pathTestsDb.fetchData('../pathology_tests.json');
+      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC");
+      assert.equal(sortedTests[0].Code, "FBC")
+      done();
+    })
+  })
+
+  
+  describe('Remove Categories', function(){
+    it('should be no biochemistry tests', function(done) {
+    // assert.equal($('.accordion-header-left h2').first().text(), ('FIB4 / Liver Fibrosis Score'));
+    pathTestsDb.fetchData('../pathology_tests.json');
+    const tests = pathTestsDb.removeCategories(pathTestsDb.getPathTests(), "BIOchemistry");
+    var members = [];
+    tests.forEach(function(test){
+      members.push(test.Department)
+    })
+    assert.includeMembers(members, [ 2, 1, 2 ], 'include members')
+    assert.equal(tests)
+    done();
+  })
+  })
+
+  describe('Write HMTL', function(){
+    it('should correctly write HTML to the DOM', function(done) {
+    // assert.equal($('.accordion-header-left h2').first().text(), ('FIB4 / Liver Fibrosis Score'));
+    done();
+})
+  })
+
+});
