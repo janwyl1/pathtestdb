@@ -62,8 +62,6 @@ const tests_data = [
         "Turnaround": ""     
 }]
 
-
-
 describe('Pathology Tests',  function() {
     beforeEach(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
@@ -95,15 +93,16 @@ describe('Pathology Tests',  function() {
   });
 
   describe('Filter Tests', function() {
+    afterEach(function() {
+      pathTestsDb.resetTests();
+    });
     it('should be an array of 2 items', function(done){
-      pathTestsDb.fetchData('../pathology_tests.json');
       const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
       assert.isArray(filteredTests)
       assert.equal(filteredTests.length, 2)
       done();
     })
     it('first item should be FIB4', function(done){
-      pathTestsDb.fetchData('../pathology_tests.json');
       const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
       assert.equal(filteredTests[0].Code, "FIB4/FBC")
       done();
@@ -111,8 +110,10 @@ describe('Pathology Tests',  function() {
   })
 
   describe('Sort Tests', function() {
+    afterEach(function() {
+      pathTestsDb.resetTests();
+    });
     it('should be an array of 2 items', function(done){
-      pathTestsDb.fetchData('../pathology_tests.json');
       const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
       const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC") 
       assert.isArray(sortedTests)
@@ -120,7 +121,6 @@ describe('Pathology Tests',  function() {
       done();
     })
     it('first item should be FBC', function(done){
-      pathTestsDb.fetchData('../pathology_tests.json');
       const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
       const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC");
       assert.equal(sortedTests[0].Code, "FBC")
@@ -130,25 +130,42 @@ describe('Pathology Tests',  function() {
 
   
   describe('Remove Categories', function(){
-    it('should be no biochemistry tests', function(done) {
-    // assert.equal($('.accordion-header-left h2').first().text(), ('FIB4 / Liver Fibrosis Score'));
-    pathTestsDb.fetchData('../pathology_tests.json');
-    const tests = pathTestsDb.removeCategories(pathTestsDb.getPathTests(), "BIOchemistry");
-    var members = [];
-    tests.forEach(function(test){
-      members.push(test.Department)
+    afterEach(function() {
+      pathTestsDb.resetTests();
+    });
+    it('should be no haematology or microbiology only tests', function(done) {
+      const newTests = pathTestsDb.removeCategories(tests_data, "Biochemistry");
+      console.log(newTests);
+      var nonBiochem = false;
+      newTests.forEach(function(test){ 
+        if(test.Department === "Microbiology" || test.Department === "Haematology"){
+          return nonBiochem = true;
+        }
+      })
+      assert.equal(nonBiochem, false);
+      done();
     })
-    assert.includeMembers(members, [ 2, 1, 2 ], 'include members')
-    assert.equal(tests)
-    done();
-  })
   })
 
-  describe('Write HMTL', function(){
-    it('should correctly write HTML to the DOM', function(done) {
-    // assert.equal($('.accordion-header-left h2').first().text(), ('FIB4 / Liver Fibrosis Score'));
-    done();
-})
+  describe('Write HTML to DOM', function(){
+    before(function(){
+      pathTestsDb.appendTestsHTML(tests_data)
+    })
+    it('$(".accordion") should contain 4 items', function(done) {
+      assert.equal($('.accordion').length, 4)
+      done();
+    })
+    it('first accordion item should be 11-Deoxycortisol', function(done) {
+      assert.equal($('.accordion-header-left h2').first().text(), '11-Deoxycortisol');
+      assert.equal($('.accordion-header-left h5').first().text(), 'SADCOR');
+      console.log($('.accordion'))
+      done();
+    })
+    it('should remove tests from DOM when finished', function(done){
+      pathTestsDb.resetTests();
+      assert.equal($('.accordion').length, 0)
+      done();
+    })
   })
 
 });
