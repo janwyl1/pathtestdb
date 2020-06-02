@@ -35,8 +35,7 @@ var pathTestsDb = (function() {
     fetchData('pathology_tests.json');
 
     function determineBgColor(colorStr) {
-        if (colorStr) {
-          switch(colorStr.toLowerCase()){
+          switch(colorStr.toString().toLowerCase()){
             case 'brown':
             case 'small brown':
             case 'large brown':
@@ -70,9 +69,6 @@ var pathTestsDb = (function() {
             default:
               return "color-white"
           }
-        } else {
-          return false
-        }
       }
 
     // Write tests to DOM
@@ -90,7 +86,7 @@ var pathTestsDb = (function() {
                 var bgColor = determineBgColor(tests[i].Container);
 
                 htmlStr += '<div class="card">';
-                htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="true" aria-controls="collapse' + i + '">';
+                htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="' + (i === 0 ? 'true' : 'false') + '" aria-controls="collapse' + i + '" href="#collapse' + i +'">';
                 htmlStr += '<div class="no-gutters row">'
                 htmlStr += '<div class="col-1 ' + bgColor + '"></div>'
                 htmlStr += '<div class="col-11 card-header-text">'
@@ -115,6 +111,8 @@ var pathTestsDb = (function() {
                 if (tests[i].Sample_Type) htmlStr+='<dt class="col-md-3 col-lg-2">Specimen</dt>' + '<dd class="col-md-9">' + tests[i].Sample_Type + '</dd>';
                 if (tests[i].Container) htmlStr+='<dt class="col-md-3 col-lg-2">Container</dt>' + '<dd class="col-md-9">' + tests[i].Container + '</dd>';
                 if (tests[i].Department) htmlStr+='<dt class="col-md-3 col-lg-2">Department</dt>' + '<dd class="col-md-9">' + tests[i].Department + '</dd>';
+                if (tests[i].EQMS_Code) htmlStr+='<dt class="col-md-3 col-lg-2">EQMS</dt>' + '<dd class="col-md-9">' + tests[i].EQMS_Code +  '</dd>';
+                if (tests[i].Lab_Instructions) htmlStr+='<dt class="col-md-3 col-lg-2">Comments</dt>' + '<dd class="col-md-9">' + tests[i].Lab_Instructions + '</dd>';
                 if (tests[i].Aliases) htmlStr+='<dt class="col-md-3 col-lg-2">Known as</dt>' + '<dd class="col-md-9">' + tests[i].Aliases + '</dd>';
                 if (tests[i].Comments) htmlStr+='<dt class="col-md-3 col-lg-2">Comments</dt>' + '<dd class="col-md-9">' + tests[i].Comments + '</dd>';
                 if (tests[i].Turnaround) htmlStr+='<dt class="col-md-3 col-lg-2">Turnaround</dt>' + '<dd class="col-md-9">' + tests[i].Turnaround + '</dd>';

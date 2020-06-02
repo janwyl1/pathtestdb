@@ -62,7 +62,7 @@ const tests_data = [
         "Turnaround": ""     
 }]
 
-describe('Pathology Tests',  function() {
+describe('Pathology Tests Database',  function() {
     beforeEach(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
 
@@ -77,6 +77,9 @@ describe('Pathology Tests',  function() {
     });
 
   describe('Fetch data', function() {
+    afterEach(function() {
+      pathTestsDb.resetTests();
+    });
     it('should be a valid json object', function(done) {
         pathTestsDb.fetchData('../pathology_tests.json');
         this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
@@ -96,14 +99,18 @@ describe('Pathology Tests',  function() {
     afterEach(function() {
       pathTestsDb.resetTests();
     });
-    it('should be an array of 2 items', function(done){
-      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+    it('should return an array', function(done){
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
       assert.isArray(filteredTests)
+      done();
+    })
+    it('should be an array of 2 items', function(done){
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
       assert.equal(filteredTests.length, 2)
       done();
     })
     it('first item should be FIB4', function(done){
-      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
       assert.equal(filteredTests[0].Code, "FIB4/FBC")
       done();
     })
@@ -113,15 +120,20 @@ describe('Pathology Tests',  function() {
     afterEach(function() {
       pathTestsDb.resetTests();
     });
-    it('should be an array of 2 items', function(done){
-      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+    it('should reurn an array', function(done){
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
       const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC") 
       assert.isArray(sortedTests)
+      done();
+    })  
+    it('should be an array of 2 items', function(done){
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
+      const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC") 
       assert.equal(sortedTests.length, 2)
       done();
     })
     it('first item should be FBC', function(done){
-      const filteredTests = pathTestsDb.filterTests(pathTestsDb.getPathTests(), "FBC");
+      const filteredTests = pathTestsDb.filterTests(tests_data, "FBC");
       const sortedTests = pathTestsDb.sortTests(filteredTests, "FBC");
       assert.equal(sortedTests[0].Code, "FBC")
       done();
@@ -133,9 +145,13 @@ describe('Pathology Tests',  function() {
     afterEach(function() {
       pathTestsDb.resetTests();
     });
+    it('should return an array', function(done) {
+      const newTests = pathTestsDb.removeCategories(tests_data, "Biochemistry");
+      assert.isArray(newTests, true);
+      done();
+    })
     it('should be no haematology or microbiology only tests', function(done) {
       const newTests = pathTestsDb.removeCategories(tests_data, "Biochemistry");
-      console.log(newTests);
       var nonBiochem = false;
       newTests.forEach(function(test){ 
         if(test.Department === "Microbiology" || test.Department === "Haematology"){
@@ -145,6 +161,7 @@ describe('Pathology Tests',  function() {
       assert.equal(nonBiochem, false);
       done();
     })
+ 
   })
 
   describe('Tests HTML', function(){
@@ -178,20 +195,23 @@ describe('Pathology Tests',  function() {
     })
   })
 
-  describe('Background color', function(){
-    it('should return a string', function(done){
+  describe('Container colors', function(){
+    it('determineBgColor() should return a string', function(done){
       assert.isString(pathTestsDb.determineBgColor('red'))
       done();
     })
-    it('should return card-color-red if red, small red or large red', function(done) {
-      
-      assert.equals(pathTestsDb.determineBgColor('red'), 'color-red')
-      assert.equals(pathTestsDb.determineBgColor('small red'), 'color-red')
-      assert.equals(pathTestsDb.determineBgColor('larGE red'), 'color-red')
+    it('determineBgColor() should return card-color-red if red, small red or large red', function(done) {
+      assert.equal(pathTestsDb.determineBgColor('red'), 'color-red')
+      assert.equal(pathTestsDb.determineBgColor('small red'), 'color-red')
+      assert.equal(pathTestsDb.determineBgColor('larGE red'), 'color-red')
       done();
     })
-    it('should return false if color not found', function(done){
-      assert.equals(pathTestsDb.determineBgColor('turqoise'), false)
+    it('determineBgColor() should return color-white for any unknown cases', function(done){
+      assert.equal(pathTestsDb.determineBgColor('turqoise'), 'color-white')
+      assert.equal(pathTestsDb.determineBgColor(0.1312314), 'color-white')
+      assert.equal(pathTestsDb.determineBgColor(true), 'color-white')
+      assert.equal(pathTestsDb.determineBgColor([]), 'color-white')
+      assert.equal(pathTestsDb.determineBgColor({}), 'color-white')
       done();
     })
   })
