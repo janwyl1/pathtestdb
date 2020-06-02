@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+body {
+  background: #E5E5E5;
+  background: black;
+}
+.main {
+  background: #fff;
+  padding: 2em 1em;
+}
+.jumbotron {
+  background: #272727;
+  color: #F5F5F5;
+  text-align: center;
+  min-height: 400px;
+}
+
+@media (min-width: 992px) { 
+  .main {
+    max-width: 1140px;
+    margin: 0 auto;
+    margin-top: -50px;
+    padding: 3em;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+  
+}
+
+.bg-img {
+  background: url('path_tests_bg_2400x1600.jpg') no-repeat center;
+  background-size: cover;
+  min-height: 400px;
+}
+
+/* Typography */
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background: #F5F5F5;
+}
+h1 {
+  font-weight: 400;
+  font-size: 56px;
+}
+h2 {
+  font-size: 1.75rem;
+}
+p {
+  font-size: 1.125rem;
+}
+.card-header-text h5 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+.card-header-right p:last-child {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  h2 { font-size: 2rem; }
+}
+
+dt, dd {
+  font-size: 1.125rem;
+}
+
+/** LAYOUT */
+.card-header {
+  padding: 0;
+}
+.card-header-text {
+    padding: .75rem 1.25rem !important;
+}
+.card-header-text p{
+  margin: 0;
+}
+// .card-header-right {
+//   text-align: right;
+// }
+.card {
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .card-header-right { text-align: right; }
+}
+
+
+
+// Colors
+$black: #000;
+$white: #fff;
+$container-brown: #A07739;
+$container-green: #048636;
+$container-red: #DA291C;
+$container-yellow: #E9D78E;
+$container-orange: #E77D27;
+$container-white: #F2F2F2;
+$container-green-urine: #78BE20;
+$container-yellow-urine: #FAE100;
+$container-faeces: linear-gradient(
+    to bottom,
+    #573a1d,
+    #573a1d 50%,
+    #734d27 50%,
+    #734d27
+  );
+$container-24h: linear-gradient(
+    to bottom,
+    #FAE100,
+    #FAE100 50%,
+    #FDF4A3 50%,
+    #FDF4A3
+  );
+$container-24h-acid: linear-gradient(
+    to bottom,
+    #78BE20,
+    #78BE20 50%,
+    #B3E771 50%,
+    #B3E771
+  );
+.color-brown {
+    background: $container-brown;
+    color: $white;
+}
+.color-green {
+    background: $container-green;
+    color: $white;
+}
+.color-red {
+    background: $container-red;
+    color: $white;
+}
+.color-yellow {
+    background: $container-yellow;
+    color: $black;
+}
+.color-orange {
+    background: $container-orange;
+    color: $white;
+}
+.color-white {
+    background: $container-white;
+    color: $black;
+}
+.color-green-urine {
+    background: $container-green-urine;
+    color: $black;
+}
+.color-yellow-urine {
+    background: $container-yellow-urine;
+    color: $black;
+}
+.color-faeces {
+    background: $container-faeces;
+    background-size: 100% 20px;
+    color: $white;
+}
+.color-24h-urine {
+    background: $container-24h;
+    background-size: 100% 20px;
+    color: $black;
+}
+.color-24h-urine-acid {
+    background: $container-24h-acid;
+    background-size: 100% 20px;
+    color: $black;
+}

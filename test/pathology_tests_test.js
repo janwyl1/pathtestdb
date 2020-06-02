@@ -147,23 +147,51 @@ describe('Pathology Tests',  function() {
     })
   })
 
-  describe('Write HTML to DOM', function(){
+  describe('Tests HTML', function(){
     before(function(){
       pathTestsDb.appendTestsHTML(tests_data)
     })
-    it('$(".accordion") should contain 4 items', function(done) {
-      assert.equal($('.accordion').length, 4)
+    it('should be 4 items', function(done) {
+      assert.equal($('.card').length, 4)
       done();
     })
     it('first accordion item should be 11-Deoxycortisol', function(done) {
-      assert.equal($('.accordion-header-left h2').first().text(), '11-Deoxycortisol');
-      assert.equal($('.accordion-header-left h5').first().text(), 'SADCOR');
-      console.log($('.accordion'))
+      assert.equal($('.card-header-left h2').first().text(), 'SADCOR');
+      assert.equal($('.card-header-left h5').first().text(), '11-Deoxycortisol');
       done();
     })
     it('should remove tests from DOM when finished', function(done){
       pathTestsDb.resetTests();
-      assert.equal($('.accordion').length, 0)
+      assert.equal($('.card').length, 0)
+      done();
+    })
+  });
+
+  describe('Display error message', function(){
+    before(function(){
+      pathTestsDb.appendTestsHTML([])
+    })
+    it('should display "No Tests Found"', function(done){
+      pathTestsDb.resetTests();
+      assert.equal($('.card').length, 0)
+      done();
+    })
+  })
+
+  describe('Background color', function(){
+    it('should return a string', function(done){
+      assert.isString(pathTestsDb.determineBgColor('red'))
+      done();
+    })
+    it('should return card-color-red if red, small red or large red', function(done) {
+      
+      assert.equals(pathTestsDb.determineBgColor('red'), 'color-red')
+      assert.equals(pathTestsDb.determineBgColor('small red'), 'color-red')
+      assert.equals(pathTestsDb.determineBgColor('larGE red'), 'color-red')
+      done();
+    })
+    it('should return false if color not found', function(done){
+      assert.equals(pathTestsDb.determineBgColor('turqoise'), false)
       done();
     })
   })

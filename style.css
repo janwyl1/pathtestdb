@@ -1,25 +1,153 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap");
 body {
   background: #E5E5E5;
+  background: black;
 }
+
 .main {
   background: #fff;
-  padding: 4em;
+  padding: 2em 1em;
 }
+
 .jumbotron {
   background: #272727;
   color: #F5F5F5;
   text-align: center;
+  min-height: 400px;
 }
 
-
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .main {
     max-width: 1140px;
     margin: 0 auto;
     margin-top: -50px;
+    padding: 3em;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
   }
-  
 }
+.bg-img {
+  background: url("path_tests_bg_2400x1600.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 400px;
+}
+
+/* Typography */
+body {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  background: #F5F5F5;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+p {
+  font-size: 1.125rem;
+}
+
+.card-header-text h5 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.card-header-right p:last-child {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+dt, dd {
+  font-size: 1.125rem;
+}
+
+/** LAYOUT */
+.card-header {
+  padding: 0;
+}
+
+.card-header-text {
+  padding: 0.75rem 1.25rem !important;
+}
+
+.card-header-text p {
+  margin: 0;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-header-right {
+    text-align: right;
+  }
+}
+.color-brown {
+  background: #A07739;
+  color: #fff;
+}
+
+.color-green {
+  background: #048636;
+  color: #fff;
+}
+
+.color-red {
+  background: #DA291C;
+  color: #fff;
+}
+
+.color-yellow {
+  background: #E9D78E;
+  color: #000;
+}
+
+.color-orange {
+  background: #E77D27;
+  color: #fff;
+}
+
+.color-white {
+  background: #F2F2F2;
+  color: #000;
+}
+
+.color-green-urine {
+  background: #78BE20;
+  color: #000;
+}
+
+.color-yellow-urine {
+  background: #FAE100;
+  color: #000;
+}
+
+.color-faeces {
+  background: linear-gradient(to bottom, #573a1d, #573a1d 50%, #734d27 50%, #734d27);
+  background-size: 100% 20px;
+  color: #fff;
+}
+
+.color-24h-urine {
+  background: linear-gradient(to bottom, #FAE100, #FAE100 50%, #FDF4A3 50%, #FDF4A3);
+  background-size: 100% 20px;
+  color: #000;
+}
+
+.color-24h-urine-acid {
+  background: linear-gradient(to bottom, #78BE20, #78BE20 50%, #B3E771 50%, #B3E771);
+  background-size: 100% 20px;
+  color: #000;
+}
+
+/*# sourceMappingURL=style.css.map */

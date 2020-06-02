@@ -1,4 +1,5 @@
 var pathTestsDb = (function() {
+    "use strict"
 
     var path_tests;
     var path_tests_original;
@@ -26,18 +27,59 @@ var pathTestsDb = (function() {
                 appendTestsHTML(path_tests);
             },
             error: function(req, status, err) {
-                $('.tests').append('<div class="">Unable to fetch data</div>')
+                $('.tests').append('<div class="error-msg">Unable to fetch data</div>')
                 console.log("Error: Unable to load data. Status: %s (%s)", status, err)
             }
         })
     }
     fetchData('pathology_tests.json');
 
+    function determineBgColor(colorStr) {
+        if (colorStr) {
+          switch(colorStr.toLowerCase()){
+            case 'brown':
+            case 'small brown':
+            case 'large brown':
+              return "color-brown"
+            case 'red':
+            case 'small red':
+            case 'large red':
+              return "color-red"
+            case 'green':
+            case 'small green':
+            case 'large green':
+              return "color-green"
+            case 'yellow':
+            case 'small yellow':
+            case 'large yellow':
+              return "color-yellow"
+            case 'orange':
+            case 'small orange':
+            case 'large orange':
+              return "color-orange"
+            case 'faeces':
+              return "color-faeces"      
+            case 'yellow urine':
+                return "color-yellow-urine"         
+            case 'green urine':
+              return "color-green-urine"     
+            case '24h urine':
+              return "color-24h-urine"     
+            case '24h urine acid':
+              return "color-24h-urine-acid"     
+            default:
+              return "color-white"
+          }
+        } else {
+          return false
+        }
+      }
+
     // Write tests to DOM
     function appendTestsHTML(tests) {
         var htmlStr = "";
         if (tests.length < 1) {
-           htmlStr += '<div class="">No Tests Found</div>';
+           htmlStr += '<div class="error-msg">No Tests Found</div>';
             hideShowMore(); 
         } 
 
@@ -45,31 +87,41 @@ var pathTestsDb = (function() {
 
         for (var i = startAt; i < limit; i++) {
             if (tests[i]) {
-                htmlStr += '<div class="card">';
-                htmlStr += '<div class="card-header">';
-                htmlStr += '<div class="card-header-left">';
-                if (tests[i].Name) htmlStr += '<h2>' + tests[i].Name + '</h2>'
-                if (tests[i].Code) htmlStr += '<h5>' + tests[i].Code + '</h5>'
-                htmlStr+='</div>';
-                htmlStr+='<div class="card-header-right">';
-                if (tests[i].Department) htmlStr+='<p>' + tests[i].Department + '</p>';
-                if (tests[i].Container) htmlStr+='<p>' + tests[i].Container + '</p>';
-                htmlStr+='</div>';
-                htmlStr+='</div>';
-                htmlStr+='<div class="card-body">';
-                htmlStr+='<dl>';
-                if (tests[i].Name) htmlStr+='<dt>Name</dt>' + '<dd>' + tests[i].Name + '</dd>';
-                if (tests[i].Code) htmlStr+='<dt>Code</dt>' + '<dd>' + tests[i].Code + '</dd>';
-                if (tests[i].Sample_Type) htmlStr+='<dt>Specimen</dt>' + '<dd>' + tests[i].Sample_Type + '</dd>';
-                if (tests[i].Container) htmlStr+='<dt>Container</dt>' + '<dd>' + tests[i].Container + '</dd>';
-                if (tests[i].Department) htmlStr+='<dt>Department</dt>' + '<dd>' + tests[i].Department + '</dd>';
-                if (tests[i].Aliases) htmlStr+='<dt>Known as</dt>' + '<dd>' + tests[i].Aliases + '</dd>';
-                if (tests[i].Comments) htmlStr+='<dt>Comments</dt>' + '<dd>' + tests[i].Comments + '</dd>';
-                if (tests[i].Turnaround) htmlStr+='<dt>Turnaround</dt>' + '<dd>' + tests[i].Turnaround + '</dd>';
-                htmlStr+='</dl>';
-                htmlStr+='</div>';
-                htmlStr+='</div>';
+                var bgColor = determineBgColor(tests[i].Container);
 
+                htmlStr += '<div class="card">';
+                htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="true" aria-controls="collapse' + i + '">';
+                htmlStr += '<div class="no-gutters row">'
+                htmlStr += '<div class="col-1 ' + bgColor + '"></div>'
+                htmlStr += '<div class="col-11 card-header-text">'
+                htmlStr += '<div class="row">'
+                htmlStr += '<div class="card-header-left  align-self-center col-md-8">';
+                htmlStr += '<h2 class="text-truncate">' + (tests[i].Code ? tests[i].Code : "N/A") + '</h2>'
+                htmlStr += '<h5 class="text-truncate">' + (tests[i].Name ? tests[i].Name : "N/A") + '</h5>'
+                htmlStr+='</div>';
+                htmlStr+='<div class="card-header-right align-self-center col-md-4 d-none d-sm-block ">';
+                if (tests[i].Department) htmlStr+='<p>' + tests[i].Department + '</p>';
+                if (tests[i].Container) htmlStr+='<p class="badge badge-pill ' + bgColor + '">' + tests[i].Container + '</p>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='<div class="collapse' + (i === 0 ? ' show' : '') + '" id="collapse' + i + '" aria-labelledby="heading' + i + '" data-parent="#accordion">';
+                htmlStr+='<div class="card-body">';
+                htmlStr+='<dl><div class="row">';
+                if (tests[i].Name) htmlStr+='<dt class="col-md-3 col-lg-2">Name</dt>' + '<dd class="col-md-9">' + tests[i].Name + '</dd>';
+                if (tests[i].Code) htmlStr+='<dt class="col-md-3 col-lg-2">Code</dt>' + '<dd class="col-md-9">' + tests[i].Code + '</dd>';
+                if (tests[i].Sample_Type) htmlStr+='<dt class="col-md-3 col-lg-2">Specimen</dt>' + '<dd class="col-md-9">' + tests[i].Sample_Type + '</dd>';
+                if (tests[i].Container) htmlStr+='<dt class="col-md-3 col-lg-2">Container</dt>' + '<dd class="col-md-9">' + tests[i].Container + '</dd>';
+                if (tests[i].Department) htmlStr+='<dt class="col-md-3 col-lg-2">Department</dt>' + '<dd class="col-md-9">' + tests[i].Department + '</dd>';
+                if (tests[i].Aliases) htmlStr+='<dt class="col-md-3 col-lg-2">Known as</dt>' + '<dd class="col-md-9">' + tests[i].Aliases + '</dd>';
+                if (tests[i].Comments) htmlStr+='<dt class="col-md-3 col-lg-2">Comments</dt>' + '<dd class="col-md-9">' + tests[i].Comments + '</dd>';
+                if (tests[i].Turnaround) htmlStr+='<dt class="col-md-3 col-lg-2">Turnaround</dt>' + '<dd class="col-md-9">' + tests[i].Turnaround + '</dd>';
+                htmlStr+='</dl></div>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
+                htmlStr+='</div>';
             }
         }
         $('.tests').append(htmlStr);
@@ -172,8 +224,6 @@ var pathTestsDb = (function() {
         })
     }
 
-
-
     // Revealing module pattern. Expose these methods, prevent global scope pollution.
     return {
         fetchData: fetchData,
@@ -182,7 +232,8 @@ var pathTestsDb = (function() {
         sortTests: sortTests,
         removeCategories: removeCategories,
         resetTests: resetTests,
-        appendTestsHTML: appendTestsHTML
+        appendTestsHTML: appendTestsHTML,
+        determineBgColor: determineBgColor
     }
 
 })();

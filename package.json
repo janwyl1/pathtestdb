@@ -13,6 +13,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^7.2.0",
+    "sass": "^1.26.7",
     "sinon": "^9.0.2"
   }
 }
