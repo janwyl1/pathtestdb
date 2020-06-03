@@ -87,36 +87,13 @@ $container-24h-acid: linear-gradient(
 }
 
 
-.main {
-  background: $white;
-  padding: 2em 0;
-}
-.jumbotron {
-  background: $darker-grey;
-  color: #F5F5F5;
-  text-align: center;
-  min-height: 300px;
-}
-dt {
-  color: $dark-grey;
-}
 
 
-@media (min-width: 992px) { 
-  .main {
-    max-width: 1140px;
-    margin: 0 auto;
-    margin-top: -50px;
-    padding: 3em;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border: 1px solid rgba(0,0,0,.125)
-  }
-  
-}
+
 
 .bg-img {
-  background: url('path_tests_bg_2400x1600.jpg') no-repeat center;
+  // background: url('laboratory-313864_1920.jpg') no-repeat center;
+  background: url('reception_bg_dark_90.jpg') no-repeat center;
   background-size: cover;
   min-height: 400px;
 }
@@ -135,6 +112,11 @@ h2 {
   font-size: 1.75rem;
   line-height: 32px;
 }
+h3 {
+  font-size: 1rem;
+  font-style: italic;
+  color: #555;
+}
 h5 {
   line-height: 32px;
 }
@@ -147,16 +129,15 @@ p {
   margin-bottom: 0;
 }
 .card-header-right p:last-child {
-  // font-size: 1rem;
   font-weight: 500;
 }
 .card-header-right p:first-child {
   line-height: 32px;
+  // font-style: italic;
 }
 dt {
   font-size: 1.125rem;
   line-height: 32px;
-
 }
 dd {
   font-size: 1.125rem;
@@ -166,7 +147,9 @@ dd {
 
 @media (min-width: 768px) {
   h2 { font-size: 2rem; }
+  // dt {  margin-top: 4px;}
 }
+
 
 
 /** LAYOUT */
@@ -180,8 +163,15 @@ dd {
   font-size: 1rem;
   margin: 0;
 }
-.card {
-  margin-bottom: 1rem;
+// .card {
+//   // margin-bottom: 1rem;
+// }
+.jumbotron {
+  text-align: center;
+  min-height: 300px;
+}
+.tests {
+  margin-bottom: 24px;
 }
 @media (min-width: 768px) {
   .card-header-right { text-align: right; }
@@ -189,22 +179,47 @@ dd {
 
 /* Colors */
 .card, .card-header {
-  background: none;
+  background: $white;
 }
 .card-header {
   opacity: 0.9;
-
 }
 .card-header:hover {
   opacity: 1;
-  background: $light-grey;
+  // background: $light-grey;
 }
 .card-header[aria-expanded=true] {
-  background: $light-grey;
+  // background: $light-grey;
   opacity: 1;
 }
 .bg-light-grey {
   background: $light-grey;
+}
+body {
+  background-color: #fcfcfc;
+}
+.main {
+  background: $light-grey;
+  padding: 2em 0;
+}
+.jumbotron {
+  background: $darker-grey;
+  color: #F5F5F5;
+}
+dt {
+  color: $dark-grey;
+}
+
+@media (min-width: 1200px) { 
+  .main {
+    max-width: 1140px;
+    margin: 0 auto;
+    margin-top: -50px;
+    padding: 3em;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border: 1px solid rgba(0,0,0,.125)
+  }
 }
 
 /* Misc */

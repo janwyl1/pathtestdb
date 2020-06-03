@@ -4,7 +4,7 @@ var pathTestsDb = (function() {
     var path_tests;
     var path_tests_original;
     var startAt = 0;
-    var limit = 50;
+    var limit = 40;
     
     // Getter required for exposing path_tests
     function getPathTests() {
@@ -25,6 +25,7 @@ var pathTestsDb = (function() {
                 handleSearchOnEnter();
                 handleDeptDropdownChange();
                 appendTestsHTML(path_tests);
+                handleAccordionCollapse();
             },
             error: function(req, status, err) {
                 $('.tests').append('<div class="error-msg">Unable to fetch data</div>')
@@ -218,8 +219,30 @@ var pathTestsDb = (function() {
 
     function handleShowMoreClick() {
         $('#show-more-btn').on('click', function(e) {
+            console.log("handle show more")
             showMoreTests()
         })
+    }
+
+    function scrollToClicked() {
+        var $card = $(this).closest('.card');
+        var $open = $($(this).data('parent')).find('.collapse.show');
+      
+        var additionalOffset = 0;
+        if($card.prevAll().filter($open.closest('.card')).length !== 0)
+        {
+              additionalOffset =  $open.height();
+        }
+        $('html,body').animate({
+          scrollTop: $card.offset().top - additionalOffset
+        }, 500);
+  
+    }
+    function handleAccordionCollapse(){
+        $('.collapse').on('show.bs.collapse', function(e) {
+            console.log("Collapse")
+            scrollToClicked();
+        });
     }
 
     // Revealing module pattern. Expose these methods, prevent global scope pollution.
@@ -231,7 +254,8 @@ var pathTestsDb = (function() {
         removeCategories: removeCategories,
         resetTests: resetTests,
         appendTestsHTML: appendTestsHTML,
-        determineBgColor: determineBgColor
+        determineBgColor: determineBgColor,
+        handleAccordionCollapse: handleAccordionCollapse
     }
 
 })();
