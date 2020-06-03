@@ -92,16 +92,14 @@ $container-24h-acid: linear-gradient(
 
 
 .bg-img {
-  // background: url('laboratory-313864_1920.jpg') no-repeat center;
   background: url('reception_bg_dark_90.jpg') no-repeat center;
   background-size: cover;
-  min-height: 400px;
+
 }
 
 /* Typography */
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  // background: #F5F5F5;
   background: $bg-grey;
 }
 h1 {
@@ -147,7 +145,6 @@ dd {
 
 @media (min-width: 768px) {
   h2 { font-size: 2rem; }
-  // dt {  margin-top: 4px;}
 }
 
 
@@ -168,7 +165,7 @@ dd {
 // }
 .jumbotron {
   text-align: center;
-  min-height: 300px;
+  min-height: 350px;
 }
 .tests {
   margin-bottom: 24px;
@@ -186,10 +183,9 @@ dd {
 }
 .card-header:hover {
   opacity: 1;
-  // background: $light-grey;
+
 }
 .card-header[aria-expanded=true] {
-  // background: $light-grey;
   opacity: 1;
 }
 .bg-light-grey {
@@ -203,7 +199,7 @@ body {
   padding: 2em 0;
 }
 .jumbotron {
-  background: $darker-grey;
+  // background: $darker-grey;
   color: #F5F5F5;
 }
 dt {
@@ -220,15 +216,14 @@ dt {
     border-top-left-radius: 25px;
     border: 1px solid rgba(0,0,0,.125)
   }
+
+  .jumbotron {
+    min-height: 400px;
+  }
+
 }
 
 /* Misc */
 .card-header {
   cursor: pointer;
-}
-// .card {
-//   opacity: 0.9;
-// }
-.card:hover {
-  opacity: 1;
 }

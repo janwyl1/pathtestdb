@@ -60,7 +60,6 @@
 .bg-img {
   background: url("reception_bg_dark_90.jpg") no-repeat center;
   background-size: cover;
-  min-height: 400px;
 }
 
 /* Typography */
@@ -139,7 +138,7 @@ dd {
 
 .jumbotron {
   text-align: center;
-  min-height: 300px;
+  min-height: 350px;
 }
 
 .tests {
@@ -182,7 +181,6 @@ body {
 }
 
 .jumbotron {
-  background: #272727;
   color: #F5F5F5;
 }
 
@@ -200,14 +198,14 @@ dt {
     border-top-left-radius: 25px;
     border: 1px solid rgba(0, 0, 0, 0.125);
   }
+
+  .jumbotron {
+    min-height: 400px;
+  }
 }
 /* Misc */
 .card-header {
   cursor: pointer;
-}
-
-.card:hover {
-  opacity: 1;
 }
 
 /*# sourceMappingURL=style.css.map */
