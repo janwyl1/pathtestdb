@@ -200,7 +200,7 @@ describe('Pathology Tests Database',  function() {
       assert.isString(pathTestsDb.determineBgColor('red'))
       done();
     })
-    it('determineBgColor() should return card-color-red if red, small red or large red', function(done) {
+    it('determineBgColor() should return color-red if red, small red or large red', function(done) {
       assert.equal(pathTestsDb.determineBgColor('red'), 'color-red')
       assert.equal(pathTestsDb.determineBgColor('small red'), 'color-red')
       assert.equal(pathTestsDb.determineBgColor('larGE red'), 'color-red')
@@ -212,6 +212,24 @@ describe('Pathology Tests Database',  function() {
       assert.equal(pathTestsDb.determineBgColor(true), 'color-white')
       assert.equal(pathTestsDb.determineBgColor([]), 'color-white')
       assert.equal(pathTestsDb.determineBgColor({}), 'color-white')
+      done();
+    })
+    it('determineBorderColor() should return a string', function(done){
+      assert.isString(pathTestsDb.determineBorderColor('green'))
+      done();
+    })
+    it('determineBorderColor() should return border-green if green, small green or large green', function(done) {
+      assert.equal(pathTestsDb.determineBorderColor('green'), 'border-green')
+      assert.equal(pathTestsDb.determineBorderColor('small green'), 'border-green')
+      assert.equal(pathTestsDb.determineBorderColor('larGE green'), 'border-green')
+      done();
+    })
+    it('determineBorderColor() should return border-white for any unknown cases', function(done){
+      assert.equal(pathTestsDb.determineBorderColor('turqoise'), 'border-white')
+      assert.equal(pathTestsDb.determineBorderColor(0.1312314), 'border-white')
+      assert.equal(pathTestsDb.determineBorderColor(true), 'border-white')
+      assert.equal(pathTestsDb.determineBorderColor([]), 'border-white')
+      assert.equal(pathTestsDb.determineBorderColor({}), 'border-white')
       done();
     })
   })

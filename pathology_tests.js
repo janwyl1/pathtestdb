@@ -33,7 +33,6 @@ var pathTestsDb = (function() {
             }
         })
     }
-    fetchData('pathology_tests.json');
 
     function determineBgColor(colorStr) {
           switch(colorStr.toString().toLowerCase()){
@@ -284,6 +283,8 @@ var pathTestsDb = (function() {
         });
     }
 
+    fetchData('pathology_tests.json');
+
     // Revealing module pattern. Expose these methods, prevent global scope pollution.
     return {
         fetchData: fetchData,
@@ -294,7 +295,7 @@ var pathTestsDb = (function() {
         resetTests: resetTests,
         appendTestsHTML: appendTestsHTML,
         determineBgColor: determineBgColor,
-        handleAccordionCollapse: handleAccordionCollapse
+        determineBorderColor: determineBorderColor
     }
 
 })();

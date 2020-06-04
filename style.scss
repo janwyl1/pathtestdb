@@ -74,7 +74,7 @@ $container-24h-acid: linear-gradient(
   border-left: 40px solid $container-orange;
 }
 .border-white {
-  border-left: 40px solid $container-white;
+  border-left: 40px solid $container-white !important; // override bootstrap default
 }
 .border-green-urine {
   border-left: 40px solid $container-green-urine;

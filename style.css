@@ -21,7 +21,7 @@
 }
 
 .border-white {
-  border-left: 40px solid #F2F2F2;
+  border-left: 40px solid #F2F2F2 !important;
 }
 
 .border-green-urine {
