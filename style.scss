@@ -176,7 +176,11 @@ dd {
 .tests {
   margin-bottom: 24px;
 }
-
+.title-img {
+  width: 56px;
+  margin-right: 16px;
+  float: left;
+}
 .search label {
   font-size: 1.125rem;
   color: $mid-grey;
@@ -184,7 +188,11 @@ dd {
 @media (min-width: 768px) {
   .card-header-right { text-align: right; }
 }
-
+@media (min-width: 974px) {
+  header .lead {
+    padding-left: 76px;
+  }
+}
 /* Colors */
 // .card-header, .card {
 //   border: 1px solid rgba(0,0,0,0.05)

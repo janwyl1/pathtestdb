@@ -153,6 +153,12 @@ dd {
   margin-bottom: 24px;
 }
 
+.title-img {
+  width: 56px;
+  margin-right: 16px;
+  float: left;
+}
+
 .search label {
   font-size: 1.125rem;
   color: #555;
@@ -161,6 +167,11 @@ dd {
 @media (min-width: 768px) {
   .card-header-right {
     text-align: right;
+  }
+}
+@media (min-width: 974px) {
+  header .lead {
+    padding-left: 76px;
   }
 }
 /* Colors */
