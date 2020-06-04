@@ -69,8 +69,46 @@ var pathTestsDb = (function() {
               return "color-24h-urine-acid"     
             default:
               return "color-white"
-          }
-      }
+        }
+    }
+
+    function determineBorderColor(colorStr){
+        switch(colorStr.toString().toLowerCase()){
+            case 'brown':
+            case 'small brown':
+            case 'large brown':
+              return "border-brown"
+            case 'red':
+            case 'small red':
+            case 'large red':
+              return "border-red"
+            case 'green':
+            case 'small green':
+            case 'large green':
+              return "border-green"
+            case 'yellow':
+            case 'small yellow':
+            case 'large yellow':
+              return "border-yellow"
+            case 'orange':
+            case 'small orange':
+            case 'large orange':
+              return "border-orange"
+            case 'faeces':
+              return "border-faeces"      
+            case 'yellow urine':
+                return "border-yellow-urine"         
+            case 'green urine':
+              return "border-green-urine"     
+            case '24h urine':
+              return "border-24h-urine"     
+            case '24h urine acid':
+              return "border-24h-urine-acid"     
+            default:
+              return "border-white"
+        }
+    } 
+    
 
     // Write tests to DOM
     function appendTestsHTML(tests) {
@@ -85,12 +123,13 @@ var pathTestsDb = (function() {
         for (var i = startAt; i < limit; i++) {
             if (tests[i]) {
                 var bgColor = determineBgColor(tests[i].Container);
+                var borderColor = determineBorderColor(tests[i].Container);
 
                 htmlStr += '<div class="card">';
                 htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="' + (i === 0 ? 'true' : 'false') + '" aria-controls="collapse' + i + '" href="#collapse' + i +'" id="heading' + i + '">';
                 htmlStr += '<div class="no-gutters row">'
-                htmlStr += '<div class="col-1 ' + bgColor + '"></div>'
-                htmlStr += '<div class="col-11 card-header-text">'
+                // htmlStr += '<div class="col-1 ' + bgColor + '"></div>'
+                htmlStr += '<div class="col-12 card-header-text ' + borderColor + '">'
                 htmlStr += '<div class="row">'
                 htmlStr += '<div class="card-header-left  align-self-center col-md-8">';
                 htmlStr += '<h2 class="text-truncate">' + (tests[i].Code ? tests[i].Code : "N/A") + '</h2>'

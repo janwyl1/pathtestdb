@@ -8,7 +8,7 @@
     "start": "http-server -p 3000"
   },
   "keywords": [],
-  "author": "",
+  "author": "James Anwyl and Kevin Li",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.2.0",

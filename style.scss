@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
-// Colors
+/* Container Colors */
 $black: #000;
 $white: #fff;
 $light-grey: #F5F5F5;
-$bg-grey: #FAFAFA; // #555
+$bg-grey: #FAFAFA;
 $mid-grey: #555;
-// $dark-grey: #7a7a7a;
 $darker-grey: #272727;
 $container-brown: #A07739;
 $container-green: #048636;
@@ -23,6 +22,13 @@ $container-faeces: linear-gradient(
     #734d27 50%,
     #734d27
   );
+  $container-faeces-v: repeating-linear-gradient(
+    to right,
+    #573a1d,
+    #573a1d 10px,
+    #734d27 10px,
+    #734d27 20px
+  ) ;
 $container-24h: linear-gradient(
     to bottom,
     #FAE100,
@@ -30,6 +36,14 @@ $container-24h: linear-gradient(
     #FDF4A3 50%,
     #FDF4A3
   );
+  $container-24h-v: repeating-linear-gradient(
+    to right,
+    #FAE100,
+    #FAE100 10px,
+    #FDF4A3 10px,
+    #FDF4A3 20px
+  );
+
 $container-24h-acid: linear-gradient(
     to bottom,
     #78BE20,
@@ -37,8 +51,52 @@ $container-24h-acid: linear-gradient(
     #B3E771 50%,
     #B3E771
   );
-
-
+  $container-24h-acid-v: repeating-linear-gradient(
+    to right,
+    #78BE20,
+    #78BE20 10px,
+    #B3E771 10px,
+    #B3E771 20px
+  );
+.border-brown {
+  border-left: 40px solid $container-brown;
+}
+.border-green {
+  border-left: 40px solid $container-green;
+}
+.border-red {
+  border-left: 40px solid $container-red;
+}
+.border-yellow {
+  border-left: 40px solid $container-yellow;
+}
+.border-orange {
+  border-left: 40px solid $container-orange;
+}
+.border-white {
+  border-left: 40px solid $container-white;
+}
+.border-green-urine {
+  border-left: 40px solid $container-green-urine;
+}
+.border-yellow-urine {
+  border-left: 40px solid $container-yellow-urine;
+}
+.border-faeces {
+  border-left: 40px solid;
+  border-image: repeating-linear-gradient(to top, #573a1d,#573a1d 10px, #734d27 10px,#734d27 20px );
+  border-image-slice: 1;
+}
+.border-24h-urine {
+  border-left: 40px solid;
+  border-image: repeating-linear-gradient( to top, #78BE20, #78BE20 10px, #B3E771 10px, #B3E771 20px );
+  border-image-slice: 1;
+}
+.border-24h-urine-acid {
+  border-left: 40px solid;
+  border-image: repeating-linear-gradient(to top, #78BE20, #78BE20 10px, #B3E771 10px, #B3E771 20px );
+  border-image-slice: 1;
+}
 .color-brown {
     background: $container-brown;
     color: $white;
@@ -87,10 +145,43 @@ $container-24h-acid: linear-gradient(
     color: $black;
 }
 
-
-
-
-
+/* Text/other colors */
+.error-msg {
+  color: $black;
+}
+.card, .card-header {
+  background: $white;
+}
+.card-header {
+  opacity: 0.85;
+}
+.card-header:hover, .card-header[aria-expanded=true] {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+.bg-light-grey {
+  background: $light-grey;
+}
+body {
+  background-color: $bg-grey;
+}
+.main {
+  background: $light-grey;
+  padding: 2em 0;
+}
+.jumbotron {
+  color:$light-grey;
+}
+h3 {
+  color: $mid-grey;
+}
+dt {
+  color: $mid-grey;
+}
+footer p {
+  text-align: right;
+  color: $mid-grey;
+}
 
 .bg-img {
   background: url('reception_bg_dark_90.jpg') no-repeat center;
@@ -132,7 +223,6 @@ footer p {
 }
 .card-header-right p:first-child {
   line-height: 32px;
-  // font-style: italic;
 }
 dt {
   font-size: 1.125rem;
@@ -166,9 +256,6 @@ dd {
   font-size: 1rem;
   margin: 0;
 }
-// .card {
-//   // margin-bottom: 1rem;
-// }
 .jumbotron {
   text-align: center;
   min-height: 350px;
@@ -193,47 +280,7 @@ dd {
     padding-left: 76px;
   }
 }
-/* Colors */
-// .card-header, .card {
-//   border: 1px solid rgba(0,0,0,0.05)
-// }
-.error-msg {
-  color: $black;
-}
-.card, .card-header {
-  background: $white;
-}
-.card-header {
-  opacity: 0.85;
-}
-.card-header:hover, .card-header[aria-expanded=true] {
-  opacity: 1;
-  transition: opacity 0.3s;
-}
 
-.bg-light-grey {
-  background: $light-grey;
-}
-body {
-  background-color: $bg-grey;
-}
-.main {
-  background: $light-grey;
-  padding: 2em 0;
-}
-.jumbotron {
-  color: #F5F5F5;
-}
-h3 {
-  color: $mid-grey;
-}
-dt {
-  color: $mid-grey;
-}
-footer p {
-  text-align: right;
-  color: $mid-grey;
-}
 
 @media (min-width: 1200px) { 
   .main {
