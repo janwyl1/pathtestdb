@@ -4,8 +4,9 @@
 $black: #000;
 $white: #fff;
 $light-grey: #F5F5F5;
-$bg-grey: #F5F5F5; // #555
-$dark-grey: #7a7a7a;
+$bg-grey: #FAFAFA; // #555
+$mid-grey: #555;
+// $dark-grey: #7a7a7a;
 $darker-grey: #272727;
 $container-brown: #A07739;
 $container-green: #048636;
@@ -94,13 +95,11 @@ $container-24h-acid: linear-gradient(
 .bg-img {
   background: url('reception_bg_dark_90.jpg') no-repeat center;
   background-size: cover;
-
 }
 
 /* Typography */
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
-  background: $bg-grey;
 }
 h1 {
   font-weight: 400;
@@ -113,13 +112,15 @@ h2 {
 h3 {
   font-size: 1rem;
   font-style: italic;
-  color: #555;
 }
 h5 {
   line-height: 32px;
 }
 p {
   font-size: 1.125rem;
+}
+footer p {
+  font-size: 1rem;
 }
 .card-header-text h5 {
   font-weight: 400;
@@ -135,12 +136,17 @@ p {
 }
 dt {
   font-size: 1.125rem;
+  font-weight: 400;
   line-height: 32px;
+  margin-top: 3px;
 }
 dd {
   font-size: 1.125rem;
   font-size: 1.5rem;
   line-height: 32px
+}
+.error-msg { 
+  font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -170,40 +176,55 @@ dd {
 .tests {
   margin-bottom: 24px;
 }
+
+.search label {
+  font-size: 1.125rem;
+  color: $mid-grey;
+}
 @media (min-width: 768px) {
   .card-header-right { text-align: right; }
 }
 
 /* Colors */
+// .card-header, .card {
+//   border: 1px solid rgba(0,0,0,0.05)
+// }
+.error-msg {
+  color: $black;
+}
 .card, .card-header {
   background: $white;
 }
 .card-header {
-  opacity: 0.9;
+  opacity: 0.85;
 }
-.card-header:hover {
+.card-header:hover, .card-header[aria-expanded=true] {
   opacity: 1;
+  transition: opacity 0.3s;
+}
 
-}
-.card-header[aria-expanded=true] {
-  opacity: 1;
-}
 .bg-light-grey {
   background: $light-grey;
 }
 body {
-  background-color: #fcfcfc;
+  background-color: $bg-grey;
 }
 .main {
   background: $light-grey;
   padding: 2em 0;
 }
 .jumbotron {
-  // background: $darker-grey;
   color: #F5F5F5;
 }
+h3 {
+  color: $mid-grey;
+}
 dt {
-  color: $dark-grey;
+  color: $mid-grey;
+}
+footer p {
+  text-align: right;
+  color: $mid-grey;
 }
 
 @media (min-width: 1200px) { 
@@ -216,14 +237,13 @@ dt {
     border-top-left-radius: 25px;
     border: 1px solid rgba(0,0,0,.125)
   }
-
   .jumbotron {
     min-height: 400px;
   }
-
 }
 
 /* Misc */
 .card-header {
   cursor: pointer;
 }
+

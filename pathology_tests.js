@@ -76,7 +76,7 @@ var pathTestsDb = (function() {
     function appendTestsHTML(tests) {
         var htmlStr = "";
         if (tests.length < 1) {
-           htmlStr += '<div class="error-msg">No Tests Found</div>';
+           htmlStr += '<div class="error-msg">No Tests Found.</div>';
             hideShowMore(); 
         } 
 
@@ -87,7 +87,7 @@ var pathTestsDb = (function() {
                 var bgColor = determineBgColor(tests[i].Container);
 
                 htmlStr += '<div class="card">';
-                htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="' + (i === 0 ? 'true' : 'false') + '" aria-controls="collapse' + i + '" href="#collapse' + i +'">';
+                htmlStr += '<div class="card-header" data-toggle="collapse" data-target="#collapse' + i + '" aria-expanded="' + (i === 0 ? 'true' : 'false') + '" aria-controls="collapse' + i + '" href="#collapse' + i +'" id="heading' + i + '">';
                 htmlStr += '<div class="no-gutters row">'
                 htmlStr += '<div class="col-1 ' + bgColor + '"></div>'
                 htmlStr += '<div class="col-11 card-header-text">'

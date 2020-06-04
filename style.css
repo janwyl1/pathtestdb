@@ -65,7 +65,6 @@
 /* Typography */
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
-  background: #F5F5F5;
 }
 
 h1 {
@@ -81,7 +80,6 @@ h2 {
 h3 {
   font-size: 1rem;
   font-style: italic;
-  color: #555;
 }
 
 h5 {
@@ -90,6 +88,10 @@ h5 {
 
 p {
   font-size: 1.125rem;
+}
+
+footer p {
+  font-size: 1rem;
 }
 
 .card-header-text h5 {
@@ -108,13 +110,19 @@ p {
 
 dt {
   font-size: 1.125rem;
+  font-weight: 400;
   line-height: 32px;
+  margin-top: 3px;
 }
 
 dd {
   font-size: 1.125rem;
   font-size: 1.5rem;
   line-height: 32px;
+}
+
+.error-msg {
+  font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -145,26 +153,32 @@ dd {
   margin-bottom: 24px;
 }
 
+.search label {
+  font-size: 1.125rem;
+  color: #555;
+}
+
 @media (min-width: 768px) {
   .card-header-right {
     text-align: right;
   }
 }
 /* Colors */
+.error-msg {
+  color: #000;
+}
+
 .card, .card-header {
   background: #fff;
 }
 
 .card-header {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
-.card-header:hover {
+.card-header:hover, .card-header[aria-expanded=true] {
   opacity: 1;
-}
-
-.card-header[aria-expanded=true] {
-  opacity: 1;
+  transition: opacity 0.3s;
 }
 
 .bg-light-grey {
@@ -172,7 +186,7 @@ dd {
 }
 
 body {
-  background-color: #fcfcfc;
+  background-color: #FAFAFA;
 }
 
 .main {
@@ -184,8 +198,17 @@ body {
   color: #F5F5F5;
 }
 
+h3 {
+  color: #555;
+}
+
 dt {
-  color: #7a7a7a;
+  color: #555;
+}
+
+footer p {
+  text-align: right;
+  color: #555;
 }
 
 @media (min-width: 1200px) {
