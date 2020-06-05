@@ -34,18 +34,27 @@
 
 .border-faeces {
   border-left: 40px solid;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
   border-image: repeating-linear-gradient(to top, #573a1d, #573a1d 10px, #734d27 10px, #734d27 20px);
   border-image-slice: 1;
 }
 
 .border-24h-urine {
   border-left: 40px solid;
-  border-image: repeating-linear-gradient(to top, #78BE20, #78BE20 10px, #B3E771 10px, #B3E771 20px);
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-image: repeating-linear-gradient(to top, #FAE100, #FAE100 10px, #FDF4A3 10px, #FDF4A3 20px);
   border-image-slice: 1;
 }
 
 .border-24h-urine-acid {
   border-left: 40px solid;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
   border-image: repeating-linear-gradient(to top, #78BE20, #78BE20 10px, #B3E771 10px, #B3E771 20px);
   border-image-slice: 1;
 }
@@ -109,6 +118,14 @@
 }
 
 /* Text/other colors */
+a, a:visited {
+  color: #F5F5F5;
+}
+
+a:hover, a:active, a:focus {
+  color: #fff;
+}
+
 .error-msg {
   color: #000;
 }
@@ -151,17 +168,33 @@ dt {
   color: #555;
 }
 
+footer {
+  background: #555;
+}
+
 footer p {
-  text-align: right;
+  color: #F5F5F5;
+}
+
+.search label {
   color: #555;
 }
 
 .bg-img {
-  background: url("reception_bg_dark_90.jpg") no-repeat center;
+  background: url("../img/reception_bg_dark_90.jpg") no-repeat center;
   background-size: cover;
 }
 
 /* Typography */
+a, a:visited {
+  font-size: 1.125rem;
+  text-decoration: underline;
+}
+
+a:hover, a:active, a:focus {
+  text-decoration: none;
+}
+
 body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
 }
@@ -224,12 +257,21 @@ dd {
   font-size: 1.5rem;
 }
 
+.search label {
+  font-size: 1.125rem;
+}
+
 @media (min-width: 768px) {
   h2 {
     font-size: 2rem;
   }
 }
 /** LAYOUT */
+.main {
+  min-height: 700px;
+  margin-bottom: 48px;
+}
+
 .card-header {
   padding: 0;
 }
@@ -258,9 +300,12 @@ dd {
   float: left;
 }
 
-.search label {
-  font-size: 1.125rem;
-  color: #555;
+footer {
+  padding: 2rem 0;
+}
+
+.footer-right {
+  text-align: right;
 }
 
 @media (min-width: 768px) {
@@ -276,7 +321,8 @@ dd {
 @media (min-width: 1200px) {
   .main {
     max-width: 1140px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: -50px;
     padding: 3em;
     border-top-right-radius: 25px;
