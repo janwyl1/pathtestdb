@@ -283,7 +283,7 @@ var pathTestsDb = (function() {
         });
     }
 
-    fetchData('pathology_tests.json');
+    fetchData('data/pathology_tests.json');
 
     // Revealing module pattern. Expose these methods, prevent global scope pollution.
     return {

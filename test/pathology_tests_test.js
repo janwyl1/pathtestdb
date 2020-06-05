@@ -81,14 +81,14 @@ describe('Pathology Tests Database',  function() {
       pathTestsDb.resetTests();
     });
     it('should be a valid json object', function(done) {
-        pathTestsDb.fetchData('../pathology_tests.json');
+        pathTestsDb.fetchData('../data/pathology_tests.json');
         this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
         assert.isArray(pathTestsDb.getPathTests())
         assert.isObject(pathTestsDb.getPathTests()[0]);
         done()
     });
     it('should contain 4 items', function(done) {
-        pathTestsDb.fetchData('../pathology_tests.json');
+        pathTestsDb.fetchData('../data/pathology_tests.json');
         this.requests[0].respond(200, { 'Content-Type': 'text/json' }, JSON.stringify(tests_data));
         assert.equal(pathTestsDb.getPathTests().length, 4);
         done()
