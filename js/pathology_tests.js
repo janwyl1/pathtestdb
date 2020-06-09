@@ -150,7 +150,7 @@ var pathTestsDb = (function() {
                 if (tests[i].Sample_Type) htmlStr+='<dt class="col-md-3 col-lg-2">Specimen</dt>' + '<dd class="col-md-9">' + tests[i].Sample_Type + '</dd>';
                 if (tests[i].Container) htmlStr+='<dt class="col-md-3 col-lg-2">Container</dt>' + '<dd class="col-md-9">' + tests[i].Container + '</dd>';
                 if (tests[i].Department) htmlStr+='<dt class="col-md-3 col-lg-2">Department</dt>' + '<dd class="col-md-9">' + tests[i].Department + '</dd>';
-                if (tests[i].EQMS_Code) htmlStr+='<dt class="col-md-3 col-lg-2">EQMS</dt>' + '<dd class="col-md-9">' + tests[i].EQMS_Code +  '</dd>';
+                if (tests[i].EQMS_Code) htmlStr+='<dt class="col-md-3 col-lg-2">EQMS</dt>' + '<dd class="col-md-9"><a href="' + tests[i].EQMS_Link +  '" class="eqms-link">' + tests[i].EQMS_Code + '</a>' + '</dd>';
                 if (tests[i].Lab_Instructions) htmlStr+='<dt class="col-md-3 col-lg-2">Comments</dt>' + '<dd class="col-md-9">' + tests[i].Lab_Instructions + '</dd>';
                 if (tests[i].Aliases) htmlStr+='<dt class="col-md-3 col-lg-2">Known as</dt>' + '<dd class="col-md-9">' + tests[i].Aliases + '</dd>';
                 if (tests[i].Comments) htmlStr+='<dt class="col-md-3 col-lg-2">Comments</dt>' + '<dd class="col-md-9">' + tests[i].Comments + '</dd>';

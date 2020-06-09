@@ -4,7 +4,7 @@
 $black: #000;
 $white: #fff;
 $light-grey: #F5F5F5;
-$bg-grey: #FAFAFA;
+$bg-grey: #bbb;
 $mid-grey: #555;
 $darker-grey: #272727;
 $container-brown: #A07739;
@@ -151,22 +151,26 @@ a:hover, a:active, a:focus {
   color: $mid-grey
 }
 .card-header {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 .card-header:hover, .card-header[aria-expanded=true], .card-body {
   opacity: 1;
   color: $black;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
 }
 
 .bg-light-grey {
   background: $light-grey;
 }
 body {
-  background-color: $bg-grey;
+  // background-color: $bg-grey;
+  background: $white;
+  // background: rgb(112,112,112);
+  // background: linear-gradient(45deg, rgba(112,112,112,1) 0%, rgba(85,85,85,1) 100%);
 }
 .main {
   background: $light-grey;
+  background: #f9f9f9;
   padding: 2em 0;
 }
 .jumbotron {
@@ -177,6 +181,9 @@ h3 {
 }
 dt {
   color: $mid-grey;
+}
+a.eqms-link {
+  color: $black;
 }
 footer {
   background: $mid-grey;
@@ -198,6 +205,7 @@ footer p {
 /* Typography */
 a, a:visited {
   font-size: 1.125rem;
+  text-transform: uppercase;
   text-decoration: underline;
 }
 a:hover, a:active, a:focus {
@@ -245,7 +253,7 @@ dt {
   line-height: 32px;
   margin-top: 3px;
 }
-dd {
+dd, .eqms-link {
   font-size: 1.125rem;
   font-size: 1.5rem;
   line-height: 32px
@@ -311,6 +319,8 @@ footer {
     padding: 3em;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border: 1px solid rgba(0,0,0,.125)
   }
   .jumbotron {

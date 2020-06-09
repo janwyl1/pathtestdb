@@ -136,13 +136,13 @@ a:hover, a:active, a:focus {
 }
 
 .card-header {
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .card-header:hover, .card-header[aria-expanded=true], .card-body {
   opacity: 1;
   color: #000;
-  transition: opacity 0.3s;
+  transition: all 0.3s;
 }
 
 .bg-light-grey {
@@ -150,11 +150,12 @@ a:hover, a:active, a:focus {
 }
 
 body {
-  background-color: #FAFAFA;
+  background: #fff;
 }
 
 .main {
   background: #F5F5F5;
+  background: #f9f9f9;
   padding: 2em 0;
 }
 
@@ -168,6 +169,10 @@ h3 {
 
 dt {
   color: #555;
+}
+
+a.eqms-link {
+  color: #000;
 }
 
 footer {
@@ -190,6 +195,7 @@ footer p {
 /* Typography */
 a, a:visited {
   font-size: 1.125rem;
+  text-transform: uppercase;
   text-decoration: underline;
 }
 
@@ -249,7 +255,7 @@ dt {
   margin-top: 3px;
 }
 
-dd {
+dd, .eqms-link {
   font-size: 1.125rem;
   font-size: 1.5rem;
   line-height: 32px;
@@ -324,6 +330,8 @@ footer {
     padding: 3em;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.125);
   }
 
