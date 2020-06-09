@@ -132,14 +132,16 @@ a:hover, a:active, a:focus {
 
 .card, .card-header {
   background: #fff;
+  color: #555;
 }
 
 .card-header {
   opacity: 0.85;
 }
 
-.card-header:hover, .card-header[aria-expanded=true] {
+.card-header:hover, .card-header[aria-expanded=true], .card-body {
   opacity: 1;
+  color: #000;
   transition: opacity 0.3s;
 }
 
@@ -311,11 +313,6 @@ footer {
 @media (min-width: 768px) {
   .card-header-right {
     text-align: right;
-  }
-}
-@media (min-width: 974px) {
-  header .lead {
-    padding-left: 76px;
   }
 }
 @media (min-width: 1200px) {
