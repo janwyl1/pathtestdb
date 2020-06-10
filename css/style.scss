@@ -5,7 +5,8 @@ $black: #000;
 $white: #fff;
 $light-grey: #F5F5F5;
 $bg-grey: #bbb;
-$mid-grey: #555;
+// $mid-grey: #555;
+$mid-grey: #4A4A4A;
 $darker-grey: #272727;
 $container-brown: #A07739;
 $container-green: #048636;
@@ -90,50 +91,50 @@ $container-24h-acid: linear-gradient(
 }
 .color-brown {
     background: $container-brown;
-    color: $white;
+    color: $light-grey;
 }
 .color-green {
     background: $container-green;
-    color: $white;
+    color: $light-grey;
 }
 .color-red {
     background: $container-red;
-    color: $white;
+    color: $light-grey;
 }
 .color-yellow {
     background: $container-yellow;
-    color: $black;
+    color: $darker-grey;
 }
 .color-orange {
     background: $container-orange;
-    color: $white;
+    color: $light-grey;
 }
 .color-white {
     background: $container-white;
-    color: $black;
+    color: $darker-grey;
 }
 .color-green-urine {
     background: $container-green-urine;
-    color: $black;
+    color: $darker-grey;
 }
 .color-yellow-urine {
     background: $container-yellow-urine;
-    color: $black;
+    color: $darker-grey;
 }
 .color-faeces {
     background: $container-faeces;
     background-size: 100% 20px;
-    color: $white;
+    color: $light-grey;
 }
 .color-24h-urine {
     background: $container-24h;
     background-size: 100% 20px;
-    color: $black;
+    color: $darker-grey;
 }
 .color-24h-urine-acid {
     background: $container-24h-acid;
     background-size: 100% 20px;
-    color: $black;
+    color: $darker-grey;
 }
 
 /* Text/other colors */
@@ -141,21 +142,21 @@ a, a:visited {
   color: $light-grey;
 }
 a:hover, a:active, a:focus {
-  color: $white;
+  color: $light-grey;
 }
 .error-msg {
-  color: $black;
+  color: $darker-grey;
 }
 .card, .card-header {
   background: $white;
   color: $mid-grey
 }
 .card-header {
-  opacity: 0.9;
+  // opacity: 0.9;
 }
 .card-header:hover, .card-header[aria-expanded=true], .card-body {
-  opacity: 1;
-  color: $black;
+  // opacity: 1;
+  color: $darker-grey;
   transition: all 0.3s;
 }
 
@@ -165,6 +166,7 @@ a:hover, a:active, a:focus {
 body {
   // background-color: $bg-grey;
   background: $light-grey;
+  color: $light-grey;
   // background: rgb(112,112,112);
   // background: linear-gradient(45deg, rgba(112,112,112,1) 0%, rgba(85,85,85,1) 100%);
 }
@@ -172,6 +174,11 @@ body {
   background: $light-grey;
   // background: #f9f9f9;
   padding: 2em 0;
+}
+.btn-dark {
+  color: $light-grey;
+  background-color: $darker-grey;
+  border-color: $darker-grey;
 }
 .jumbotron {
   color:$light-grey;
@@ -183,7 +190,7 @@ dt {
   color: $mid-grey;
 }
 a.eqms-link {
-  color: $black;
+  color: $darker-grey;
 }
 footer {
   background: $mid-grey;
@@ -191,7 +198,6 @@ footer {
 footer p {
   color: $light-grey;
 }
-
 .search label {
   color: $mid-grey;
 }
@@ -235,6 +241,9 @@ p {
 }
 footer p {
   font-size: 1rem;
+}
+footer a {
+  font-weight: 600;
 }
 .card-header-text h5 {
   font-weight: 400;
@@ -280,8 +289,12 @@ dd, .eqms-link {
   min-height: 700px;
   margin-bottom: 48px;
 }
+.card {
+  border-bottom: none;
+}
 .card-header {
   padding: 0;
+  // border-bottom: 1px solid #ccc;
 }
 .card-header-text {
     padding: .75rem 1.25rem !important;
@@ -289,6 +302,7 @@ dd, .eqms-link {
 .card-header-text p {
   font-size: 1rem;
   margin: 0;
+
 }
 .jumbotron {
   text-align: center;
@@ -305,6 +319,7 @@ dd, .eqms-link {
 footer {
   padding: 2rem 0;
 }
+
 .footer-right {
   text-align: right;
 }
@@ -315,22 +330,19 @@ footer {
 
 @media (max-width: 767px) {
   button#search-btn {
-    margin-top: 1em;
+    margin-top: 8px;
   }
 }
-
 @media (min-width: 1200px) { 
   .main {
     max-width: 1140px;
     margin-left:  auto;
     margin-right: auto;
-    // margin-top: -50px;
-    padding: 3em;
-    // border-top-right-radius: 25px;
-    // border-top-left-radius: 25px;
-    // border-bottom-right-radius: 10px;
-    // border-bottom-left-radius: 10px;
-    // border: 1px solid rgba(0,0,0,.125)
+    padding: 2em 3em;
+    background: #fff;
+    margin-top: -50px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
   .jumbotron {
     min-height: 400px;

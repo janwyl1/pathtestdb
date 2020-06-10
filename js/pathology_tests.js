@@ -25,7 +25,8 @@ var pathTestsDb = (function() {
                 handleSearchOnEnter();
                 handleDeptDropdownChange();
                 appendTestsHTML(path_tests);
-                handleAccordionCollapse();
+                // handleAccordionCollapse();
+                selectSearchInput();
             },
             error: function(req, status, err) {
                 $('.tests').append($.parseHTML('<div class="error-msg">Unable to fetch data</div>'))
@@ -231,7 +232,13 @@ var pathTestsDb = (function() {
         } else {
             hideShowMore();
         }
+    };
+
+    function selectSearchInput() {
+      console.log("Select input");
+      $('#search-inpt').focus();
     }
+
 
     // ATTACH EVENT HANDLERS
     function handleDeptDropdownChange() {
@@ -245,6 +252,7 @@ var pathTestsDb = (function() {
             if (e.which == 13) {
               e.preventDefault();
               searchTests();
+              scrollToSearch();
             }
         });
     }
@@ -262,26 +270,32 @@ var pathTestsDb = (function() {
         })
     }
 
-    function scrollToClicked() {
-        var $card = $(this).closest('.card');
-        var $open = $($(this).data('parent')).find('.collapse.show');
+    // function scrollToClicked() {
+    //     var $card = $(this).closest('.card');
+    //     var $open = $($(this).data('parent')).find('.collapse.show');
       
-        var additionalOffset = 0;
-        if($card.prevAll().filter($open.closest('.card')).length !== 0)
-        {
-              additionalOffset =  $open.height();
-        }
-        $('html,body').animate({
-          scrollTop: $card.offset().top - additionalOffset
+    //     var additionalOffset = 0;
+    //     if($card.prevAll().filter($open.closest('.card')).length !== 0)
+    //     {
+    //           additionalOffset =  $open.height();
+    //     }
+    //     $('html,body').animate({
+    //       scrollTop: $card.offset().top - additionalOffset
+    //     }, 500);
+    // }
+
+    function scrollToSearch() {
+        $("html, body").stop().animate({
+            scrollTop: $('#search-inpt').offset().top 
         }, 500);
-  
+
     }
-    function handleAccordionCollapse(){
-        $('.collapse').on('show.bs.collapse', function(e) {
-            console.log("Collapse")
-            scrollToClicked();
-        });
-    }
+    // function handleAccordionCollapse(){
+    //     $('.collapse').on('show.bs.collapse', function(e) {
+    //         console.log("Collapse")
+    //         // scrollToClicked();
+    //     });
+    // }
 
     fetchData('data/pathology_tests.json');
 
