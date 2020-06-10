@@ -28,7 +28,7 @@ var pathTestsDb = (function() {
                 handleAccordionCollapse();
             },
             error: function(req, status, err) {
-                $('.tests').append('<div class="error-msg">Unable to fetch data</div>')
+                $('.tests').append($.parseHTML('<div class="error-msg">Unable to fetch data</div>'))
                 console.log("Error: Unable to load data. Status: %s (%s)", status, err)
             }
         })
@@ -131,8 +131,8 @@ var pathTestsDb = (function() {
                 htmlStr += '<div class="col-12 card-header-text ' + borderColor + '">'
                 htmlStr += '<div class="row">'
                 htmlStr += '<div class="card-header-left  align-self-center col-md-8">';
-                htmlStr += '<h2 class="text-truncate">' + (tests[i].Code ? tests[i].Code : "N/A") + '</h2>'
-                htmlStr += '<h5 class="text-truncate">' + (tests[i].Name ? tests[i].Name : "N/A") + '</h5>'
+                htmlStr += '<h2 class="text-truncate">' + (tests[i].Code ? tests[i].Name : "N/A") + '</h2>'
+                htmlStr += '<h5 class="text-truncate">' + (tests[i].Name ? tests[i].Code : "N/A") + '</h5>'
                 htmlStr+='</div>';
                 htmlStr+='<div class="card-header-right align-self-center col-md-4 d-none d-sm-block ">';
                 if (tests[i].Department) htmlStr+='<p>' + tests[i].Department + '</p>';
@@ -161,7 +161,7 @@ var pathTestsDb = (function() {
                 htmlStr+='</div>';
             }
         }
-        $('.tests').append(htmlStr);
+        $('.tests').append($.parseHTML(htmlStr));
     }
 
     // SEARCH / MANIPULATE TESTS

@@ -150,12 +150,11 @@ a:hover, a:active, a:focus {
 }
 
 body {
-  background: #fff;
+  background: #F5F5F5;
 }
 
 .main {
   background: #F5F5F5;
-  background: #f9f9f9;
   padding: 2em 0;
 }
 
@@ -272,6 +271,8 @@ dd, .eqms-link {
 @media (min-width: 768px) {
   h2 {
     font-size: 2rem;
+    line-height: 38px;
+    margin-bottom: 0;
   }
 }
 /** LAYOUT */
@@ -321,18 +322,17 @@ footer {
     text-align: right;
   }
 }
+@media (max-width: 767px) {
+  button#search-btn {
+    margin-top: 1em;
+  }
+}
 @media (min-width: 1200px) {
   .main {
     max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -50px;
     padding: 3em;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.125);
   }
 
   .jumbotron {

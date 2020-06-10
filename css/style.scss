@@ -164,13 +164,13 @@ a:hover, a:active, a:focus {
 }
 body {
   // background-color: $bg-grey;
-  background: $white;
+  background: $light-grey;
   // background: rgb(112,112,112);
   // background: linear-gradient(45deg, rgba(112,112,112,1) 0%, rgba(85,85,85,1) 100%);
 }
 .main {
   background: $light-grey;
-  background: #f9f9f9;
+  // background: #f9f9f9;
   padding: 2em 0;
 }
 .jumbotron {
@@ -265,7 +265,11 @@ dd, .eqms-link {
   font-size: 1.125rem;
 }
 @media (min-width: 768px) {
-  h2 { font-size: 2rem; }
+  h2 { 
+    font-size: 2rem; 
+    line-height: 38px;
+    margin-bottom: 0;
+  }
 }
 
 
@@ -309,19 +313,24 @@ footer {
   .card-header-right { text-align: right; }
 }
 
+@media (max-width: 767px) {
+  button#search-btn {
+    margin-top: 1em;
+  }
+}
 
 @media (min-width: 1200px) { 
   .main {
     max-width: 1140px;
     margin-left:  auto;
     margin-right: auto;
-    margin-top: -50px;
+    // margin-top: -50px;
     padding: 3em;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 1px solid rgba(0,0,0,.125)
+    // border-top-right-radius: 25px;
+    // border-top-left-radius: 25px;
+    // border-bottom-right-radius: 10px;
+    // border-bottom-left-radius: 10px;
+    // border: 1px solid rgba(0,0,0,.125)
   }
   .jumbotron {
     min-height: 400px;
