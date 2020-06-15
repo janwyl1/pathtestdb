@@ -25,6 +25,7 @@ var pathTestsDb = (function() {
                 handleSearchOnEnter();
                 handleDeptDropdownChange();
                 appendTestsHTML(path_tests);
+                handleAccordionClick();
                 // handleAccordionCollapse();
                 selectSearchInput();
             },
@@ -137,7 +138,8 @@ var pathTestsDb = (function() {
                 htmlStr+='</div>';
                 htmlStr+='<div class="card-header-right align-self-center col-md-4 d-none d-sm-block ">';
                 if (tests[i].Department) htmlStr+='<p>' + tests[i].Department + '</p>';
-                if (tests[i].Container) htmlStr+='<p class="badge badge-pill ' + bgColor + '">' + tests[i].Container + '</p>';
+                if (tests[i].Container) htmlStr+='<p class="badge badge-pill">' + tests[i].Container + '</p>';
+                // if (tests[i].Container) htmlStr+='<p class="badge badge-pill ' + bgColor + '">' + tests[i].Container + '</p>';
                 htmlStr+='</div>';
                 htmlStr+='</div>';
                 htmlStr+='</div>';
@@ -268,6 +270,14 @@ var pathTestsDb = (function() {
             console.log("handle show more")
             showMoreTests()
         })
+    }
+
+    function handleAccordionClick() {
+      $('.card-header').on('click', function(e){
+        // console.log($(this));
+        var badge = $(this).find('.badge');
+        badge.addClass('color-brown');
+      })
     }
 
     // function scrollToClicked() {

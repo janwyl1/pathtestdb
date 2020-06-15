@@ -1,0 +1,40 @@
+
+/* Container Colors */
+$black: #000;
+$white: #fff;
+$light-grey: #EBEBEB;
+$bg-grey: #D7D7D7;
+// $mid-grey: #555;
+$mid-grey: #4A4A4A;
+$darker-grey: #262626;
+$container-brown: #A66E33;
+$container-green: #008245;
+$container-red: #DB2C33;
+$container-yellow: #FFD640;
+$container-orange: #E76F33;
+$container-white: #F2F2F2;
+$container-green-urine: #3DB54B;
+$container-yellow-urine: #F9ED25;
+$container-faeces: linear-gradient(
+    to bottom,
+    #412414,
+    #412414 50%,
+    #603A16 50%,
+    #603A16
+  );
+
+$container-24h: linear-gradient(
+    to bottom,
+    #F9ED25,
+    #F9ED25 50%,
+    #FFF4CC 50%,
+    #FFF4CC
+  );
+
+$container-24h-acid: linear-gradient(
+    to bottom,
+    #3DB54B,
+    #3DB54B 50%,
+    #8FCC96 50%,
+    #8FCC96
+  );
