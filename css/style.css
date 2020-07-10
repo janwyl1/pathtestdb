@@ -149,11 +149,6 @@ body {
   color: #EBEBEB;
 }
 
-.main {
-  background: #EBEBEB;
-  padding: 2em 0;
-}
-
 .btn-dark {
   color: #EBEBEB;
   background-color: #262626;
@@ -289,6 +284,7 @@ dd, .eqms-link {
 .main {
   min-height: 700px;
   margin-bottom: 48px;
+  padding: 2em 0;
 }
 
 .card {
@@ -353,8 +349,6 @@ footer {
     margin-left: auto;
     margin-right: auto;
     padding: 2em 3em;
-    background: #fff;
-    margin-top: -50px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
   }
