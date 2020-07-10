@@ -210,9 +210,12 @@ p {
 footer p {
   font-size: 1rem;
 }
-footer a {
-  font-weight: 600;
+footer small a {
+  font-size: 0.875rem;
 }
+// footer a {
+//   font-weight: 600;
+// }
 .card-header-text h5 {
   font-weight: 400;
   font-size: 1.5rem;
@@ -314,7 +317,8 @@ footer {
     max-width: 1140px;
     margin-left:  auto;
     margin-right: auto;
-    padding: 2em 3em;
+    // padding: 2em 3em;
+    padding: 2em 0em;
     // margin-top: -50px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
