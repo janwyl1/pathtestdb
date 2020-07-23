@@ -188,6 +188,10 @@ footer p {
   color: #262626;
 }
 
+dt {
+  color: #757575;
+}
+
 .bg-img {
   background: url("../img/reception_bg_dark_90.jpg") no-repeat center;
   background-size: cover;
@@ -304,6 +308,10 @@ dd, .eqms-link {
   margin: 0;
 }
 
+dd {
+  margin-bottom: 0.75rem;
+}
+
 .jumbotron {
   text-align: center;
   min-height: 350px;
@@ -360,6 +368,10 @@ footer {
 /* Misc */
 .card-header {
   cursor: pointer;
+}
+
+.search {
+  border-bottom: 2px solid #D7D7D7;
 }
 
 /*# sourceMappingURL=style.css.map */

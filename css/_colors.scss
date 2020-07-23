@@ -4,7 +4,7 @@ $black: #000;
 $white: #fff;
 $light-grey: #EBEBEB;
 $bg-grey: #D7D7D7;
-// $mid-grey: #555;
+$dt-grey: #757575;
 $mid-grey: #4A4A4A;
 $darker-grey: #262626;
 $container-brown: #A66E33;
@@ -38,3 +38,100 @@ $container-24h-acid: linear-gradient(
     #8FCC96 50%,
     #8FCC96
   );
+
+  .border-brown {
+    border-left: 40px solid $container-brown;
+  }
+  .border-green {
+    border-left: 40px solid $container-green;
+  }
+  .border-red {
+    border-left: 40px solid $container-red;
+  }
+  .border-yellow {
+    border-left: 40px solid $container-yellow;
+  }
+  .border-orange {
+    border-left: 40px solid $container-orange;
+  }
+  .border-white {
+    border-left: 40px solid $container-white !important; // override bootstrap default
+  }
+  .border-green-urine {
+    border-left: 40px solid $container-green-urine;
+  }
+  .border-yellow-urine {
+    border-left: 40px solid $container-yellow-urine;
+  }
+  .border-faeces {
+    border-left: 40px solid;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-image: repeating-linear-gradient(to top, #573a1d,#573a1d 10px, #734d27 10px,#734d27 20px );
+    border-image-slice: 1;
+  }
+  .border-24h-urine {
+    border-left: 40px solid;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-image: repeating-linear-gradient( to top, #FAE100, #FAE100 10px, #FDF4A3 10px, #FDF4A3 20px );
+    border-image-slice: 1;
+  
+  }
+  .border-24h-urine-acid {
+    border-left: 40px solid;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-image: repeating-linear-gradient(to top, #78BE20, #78BE20 10px, #B3E771 10px, #B3E771 20px );
+    border-image-slice: 1;
+  }
+  .color-brown {
+      background: $container-brown;
+      color: $light-grey;
+  }
+  .color-green {
+      background: $container-green;
+      color: $light-grey;
+  }
+  .color-red {
+      background: $container-red;
+      color: $light-grey;
+  }
+  .color-yellow {
+      background: $container-yellow;
+      color: $darker-grey;
+  }
+  .color-orange {
+      background: $container-orange;
+      color: $light-grey;
+  }
+  .color-white {
+      background: $container-white;
+      color: $darker-grey;
+  }
+  .color-green-urine {
+      background: $container-green-urine;
+      color: $darker-grey;
+  }
+  .color-yellow-urine {
+      background: $container-yellow-urine;
+      color: $darker-grey;
+  }
+  .color-faeces {
+      background: $container-faeces;
+      background-size: 100% 20px;
+      color: $light-grey;
+  }
+  .color-24h-urine {
+      background: $container-24h;
+      background-size: 100% 20px;
+      color: $darker-grey;
+  }
+  .color-24h-urine-acid {
+      background: $container-24h-acid;
+      background-size: 100% 20px;
+      color: $darker-grey;
+  }
