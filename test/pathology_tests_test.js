@@ -63,19 +63,19 @@ const tests_data = [
 }]
 
 describe('Pathology Tests Database',  function() {
+    /* Mock request */
     beforeEach(function() {
         this.xhr = sinon.useFakeXMLHttpRequest();
-
         this.requests = [];
         this.xhr.onCreate = function(xhr) {
-            this.requests.push(xhr);
+        this.requests.push(xhr);
         }.bind(this);
     });
-
     afterEach(function() {
         this.xhr.restore();
     });
-
+  
+  /* Test fetchData function */
   describe('Fetch data', function() {
     afterEach(function() {
       pathTestsDb.resetTests();
@@ -94,7 +94,7 @@ describe('Pathology Tests Database',  function() {
         done()
     });
   });
-
+  /* Test filterTests function */
   describe('Filter Tests', function() {
     afterEach(function() {
       pathTestsDb.resetTests();
@@ -115,7 +115,7 @@ describe('Pathology Tests Database',  function() {
       done();
     })
   })
-
+  /* Test sortTests function */
   describe('Sort Tests', function() {
     afterEach(function() {
       pathTestsDb.resetTests();
@@ -140,18 +140,18 @@ describe('Pathology Tests Database',  function() {
     })
   })
 
-  
-  describe('Remove Categories', function(){
+  /* Test filterDepartment function */
+  describe('Filter by Department', function(){
     afterEach(function() {
       pathTestsDb.resetTests();
     });
     it('should return an array', function(done) {
-      const newTests = pathTestsDb.removeCategories(tests_data, "Biochemistry");
+      const newTests = pathTestsDb.filterDepartment(tests_data, "Biochemistry");
       assert.isArray(newTests, true);
       done();
     })
     it('should be no haematology or microbiology only tests', function(done) {
-      const newTests = pathTestsDb.removeCategories(tests_data, "Biochemistry");
+      const newTests = pathTestsDb.filterDepartment(tests_data, "Biochemistry");
       var nonBiochem = false;
       newTests.forEach(function(test){ 
         if(test.Department === "Microbiology" || test.Department === "Haematology"){
@@ -163,7 +163,7 @@ describe('Pathology Tests Database',  function() {
     })
  
   })
-
+  /* Test HTML is appending to DOM as expected */
   describe('Tests HTML', function(){
     before(function(){
       pathTestsDb.appendTestsHTML(tests_data)
@@ -173,8 +173,8 @@ describe('Pathology Tests Database',  function() {
       done();
     })
     it('first accordion item should be 11-Deoxycortisol', function(done) {
-      assert.equal($('.card-header-left h2').first().text(), 'SADCOR');
-      assert.equal($('.card-header-left h5').first().text(), '11-Deoxycortisol');
+      assert.equal($('.card-header-left h2').first().text(), '11-Deoxycortisol');
+      assert.equal($('.card-header-left h5').first().text(), 'SADCOR');
       done();
     })
     it('should remove tests from DOM when finished', function(done){
@@ -183,7 +183,7 @@ describe('Pathology Tests Database',  function() {
       done();
     })
   });
-
+  /* Test error message is displayed */
   describe('Display error message', function(){
     before(function(){
       pathTestsDb.appendTestsHTML([])
@@ -194,26 +194,8 @@ describe('Pathology Tests Database',  function() {
       done();
     })
   })
-
+  /* Test determineBorderColor function returns correct class names */
   describe('Container colors', function(){
-    it('determineBgColor() should return a string', function(done){
-      assert.isString(pathTestsDb.determineBgColor('red'))
-      done();
-    })
-    it('determineBgColor() should return color-red if red, small red or large red', function(done) {
-      assert.equal(pathTestsDb.determineBgColor('red'), 'color-red')
-      assert.equal(pathTestsDb.determineBgColor('small red'), 'color-red')
-      assert.equal(pathTestsDb.determineBgColor('larGE red'), 'color-red')
-      done();
-    })
-    it('determineBgColor() should return color-white for any unknown cases', function(done){
-      assert.equal(pathTestsDb.determineBgColor('turqoise'), 'color-white')
-      assert.equal(pathTestsDb.determineBgColor(0.1312314), 'color-white')
-      assert.equal(pathTestsDb.determineBgColor(true), 'color-white')
-      assert.equal(pathTestsDb.determineBgColor([]), 'color-white')
-      assert.equal(pathTestsDb.determineBgColor({}), 'color-white')
-      done();
-    })
     it('determineBorderColor() should return a string', function(done){
       assert.isString(pathTestsDb.determineBorderColor('green'))
       done();

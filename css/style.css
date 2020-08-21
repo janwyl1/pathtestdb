@@ -117,7 +117,7 @@
   color: #262626;
 }
 
-/* Text/other colors */
+/* COLORS */
 a, a:visited {
   color: #EBEBEB;
 }
@@ -197,7 +197,7 @@ dt {
   background-size: cover;
 }
 
-/* Typography */
+/* TYPOGRAPHY */
 a, a:visited {
   font-size: 1.125rem;
   text-transform: uppercase;
@@ -277,13 +277,6 @@ dd, .eqms-link {
   font-size: 1.125rem;
 }
 
-@media (min-width: 768px) {
-  h2 {
-    font-size: 2rem;
-    line-height: 38px;
-    margin-bottom: 0;
-  }
-}
 /** LAYOUT */
 .main {
   min-height: 700px;
@@ -341,9 +334,30 @@ footer {
   text-align: right;
 }
 
+/* MISC */
+.card-header {
+  cursor: pointer;
+}
+
+.search {
+  border-bottom: 2px solid #D7D7D7;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+    line-height: 38px;
+    margin-bottom: 0;
+  }
+}
 @media (min-width: 768px) {
   .card-header-right {
     text-align: right;
+  }
+
+  dt {
+    padding-left: 40px !important;
   }
 }
 @media (max-width: 767px) {
@@ -364,14 +378,6 @@ footer {
   .jumbotron {
     min-height: 400px;
   }
-}
-/* Misc */
-.card-header {
-  cursor: pointer;
-}
-
-.search {
-  border-bottom: 2px solid #D7D7D7;
 }
 
 /*# sourceMappingURL=style.css.map */

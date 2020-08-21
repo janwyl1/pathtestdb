@@ -1,5 +1,8 @@
-// includes polyfill
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+  /**
+   * Polyfill for Javascript includes() function. 
+   * See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes
+   */
+
 if (!String.prototype.includes) {
   String.prototype.includes = function(search, start) {
     'use strict';

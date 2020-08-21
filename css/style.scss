@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap'), '_colors';
 
-/* Text/other colors */
+/* COLORS */
 a, a:visited {
   color: $light-grey;
 }
@@ -14,28 +14,16 @@ a:hover, a:active, a:focus {
   background: $white;
   color: $mid-grey
 }
-// .card-header {
-//   // opacity: 0.9;
-// }
 .card-header:hover, .card-header[aria-expanded=true], .card-body {
-  // opacity: 1;
   color: $darker-grey;
   transition: all 0.3s;
 }
-
 .bg-light-grey {
   background: $light-grey;
 }
 body {
-  // background-color: $bg-grey;
   background: $light-grey;
   color: $light-grey;
-  // background: rgb(112,112,112);
-  // background: linear-gradient(45deg, rgba(112,112,112,1) 0%, rgba(85,85,85,1) 100%);
-}
-.main {
-  // background: $light-grey;
-  // background: #f9f9f9;
 }
 .btn-dark {
   color: $light-grey;
@@ -63,7 +51,6 @@ footer p {
 .search label {
   color: $mid-grey;
 }
-
 .badge {
   background: $bg-grey;
   color: $darker-grey;
@@ -71,18 +58,12 @@ footer p {
 dt {
   color: $dt-grey;
 }
-
-// .card-header[aria-expanded="true"] .badge {
-//   background: inherit;
-//   color: inherit;
-// }
-
 .bg-img {
   background: url('../img/reception_bg_dark_90.jpg') no-repeat center;
   background-size: cover;
 }
 
-/* Typography */
+/* TYPOGRAPHY */
 a, a:visited {
   font-size: 1.125rem;
   text-transform: uppercase;
@@ -91,7 +72,6 @@ a, a:visited {
 a:hover, a:active, a:focus {
   text-decoration: none;
 }
-
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
@@ -119,9 +99,6 @@ footer p {
 footer small a {
   font-size: 0.875rem;
 }
-// footer a {
-//   font-weight: 600;
-// }
 .card-header-text h5 {
   font-weight: 400;
   font-size: 1.5rem;
@@ -137,7 +114,6 @@ dt {
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 32px;
-  // margin-top: 3px;
 }
 dd, .eqms-link {
   font-size: 1.125rem;
@@ -150,18 +126,9 @@ dd, .eqms-link {
 .search label {
   font-size: 1.125rem;
 }
-@media (min-width: 768px) {
-  h2 { 
-    font-size: 2rem; 
-    line-height: 38px;
-    margin-bottom: 0;
-  }
-}
-
 
 
 /** LAYOUT */
-
 .main {
   min-height: 700px;
   margin-bottom: 48px;
@@ -172,7 +139,6 @@ dd, .eqms-link {
 }
 .card-header {
   padding: 0;
-  // border-bottom: 1px solid #ccc;
 }
 .card-header-text {
     padding: .75rem 1.25rem !important;
@@ -208,8 +174,27 @@ footer {
   text-align: right;
 }
 
+/* MISC */
+.card-header {
+  cursor: pointer;
+}
+.search {
+  border-bottom: 2px solid $bg-grey;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+  h2 { 
+    font-size: 2rem; 
+    line-height: 38px;
+    margin-bottom: 0;
+  }
+}
 @media (min-width: 768px) {
   .card-header-right { text-align: right; }
+  dt {
+    padding-left: 40px !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -222,9 +207,7 @@ footer {
     max-width: 1140px;
     margin-left:  auto;
     margin-right: auto;
-    // padding: 2em 3em;
     padding: 2em 0em;
-    // margin-top: -50px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
   }
@@ -232,12 +215,3 @@ footer {
     min-height: 400px;
   }
 }
-
-/* Misc */
-.card-header {
-  cursor: pointer;
-}
-.search {
-  border-bottom: 2px solid $bg-grey;
-}
-

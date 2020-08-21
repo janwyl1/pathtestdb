@@ -1,16 +1,46 @@
 # Pathology Tests Database
-By James Anwyl and Kevin Li
 
+## About
+Provides up to date test information for lab / clinical staff. The aim of the database is to save time/money by reducing the delay caused by lack of information e.g:
 
-## Unit Tests
+#### Problem 1:
+
+A request comes into the lab asking for a test called 'Coeliac Screen'. We don't recognise the name of this test so we're unsure of how to process it (it appears on our system as an 'ATTG').
+
+Without the database:
+Ask the person next to you what it is
+If they don't know ask the next person
+Continue escalating to more senior colleague until you get the answer
+
+This is disruptive as it distracts a number of people from their work. It's not uncommon to have 3 or more people all trying to find the answer. This happens multiple times per day, and it's often the same test names appearing time and again. Answers are often subjective.
+
+With the database:
+Type the alias into the database: Coeliac
+Any potential matches will show up: ATTG
+If no matches found, follow the pre-database process but add the alias to the database once we've found the answer. This will save time for anyone that runs into the same issue in the future.
+Answers have been validated by senior staff members
+
+#### Problem 2:
+
+Phlebotomist has been asked to take blood from a patient, but they are not sure which container to use.
+
+Without the database:
+Ask colleagues
+Phone the lab
+
+With the database:
+Type the code, name or alias into the database
+Any potential matches will show up
+
+## Tests
 Visit /test/testrunner.html for tests
 
-
 ##  Credits
-Clinical validators - Tom, Anne, 
-
-https://www.airpair.com/javascript/posts/unit-testing-ajax-requests-with-mocha
-https://javascriptweblog.wordpress.com/2010/12/07/namespacing-in-javascript/
-
-## License
-Do what you want.
+James Anwyl - Developer
+Kevin Li - Developer / BMS
+Tom - BMS
+Janet Sayle - Senior BMS
+Anne Woodward - Senior BMS
+Louise Halsall - Principal Clinical Scientist
+Images/Icon - Freepik.com
+Font - Google Fonts
