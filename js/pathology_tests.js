@@ -1,5 +1,5 @@
 var pathTestsDb = (function () {
-  "use strict"
+  "use strict";
 
   /**
    * Config

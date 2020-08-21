@@ -72,18 +72,20 @@ gulp.task('data', function() {
 
 
 /** Create a web server on port 3000 using gulp-connect */
-gulp.task('connect', function() {
+gulp.task('startServer', function(done) {
     connect.server({
         root: 'dist', 
         port: 3000, 
         livereload: true 
     });
+    done();
 });
 
 /** Open index.html in the browser with gulp-open. */
-gulp.task('open', function() {
+gulp.task('open', function(done) {
     gulp.src('dist/index.html')
         .pipe(open({uri: 'http://localhost:3000/'}));  
+    done();
 });
 
 /** Remove all files and folders inside dist folder, using del package */
@@ -93,14 +95,14 @@ gulp.task('clean', function() {
 
 /** Watch index.html, and all files in sass and js folders for changes. */
 gulp.task('watch', function() {
-    gulp.watch('./*.html', ['html']); 
-    gulp.watch('css/**/*', ['styles']); 
-    gulp.watch('js/**/*', ['scripts']); 
+    gulp.watch('*.html', gulp.series('html')); 
+    gulp.watch('css/*', gulp.series('styles')); 
+    gulp.watch('js/*', gulp.series('scripts')); 
 });
 
 /** Build task. Clean up dist folder, combine and minify sass/js, optimize images, write files to dist folder. */
 gulp.task('build', gulp.series('clean', 'html', 'scripts', 'styles', 'images', 'favicons', 'data'));
 
 /** Default task. Run build task first then; create server, open in browser, and watch sass, js and index.html files for changes. */
-gulp.task('default', gulp.series('build', 'connect', 'open', 'watch', function() {
+gulp.task('default', gulp.series('build', 'startServer', 'open', 'watch', function() {
 }));
