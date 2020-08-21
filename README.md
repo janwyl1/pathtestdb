@@ -1,5 +1,11 @@
 # Pathology Tests Database
 
+<img
+  width="100%"
+  alt=""
+  src="https://raw.githubusercontent.com/janwyl1/pathtestdb/master/pathtestsdb_screen.PNG"
+/>
+
 ## About
 Provides up to date test information for lab / clinical staff. The aim of the database is to save time/money by reducing the delay caused by lack of information e.g:
 
