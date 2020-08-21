@@ -36,11 +36,7 @@ Any potential matches will show up
 Visit /test/testrunner.html for tests
 
 ##  Credits
-James Anwyl - Developer
-Kevin Li - Developer / BMS
-Tom - BMS
-Janet Sayle - Senior BMS
-Anne Woodward - Senior BMS
-Louise Halsall - Principal Clinical Scientist
+Developers - James and Kevin 
+Clinicians - Tom, Janet, Anne and Louise
 Images/Icon - Freepik.com
 Font - Google Fonts
