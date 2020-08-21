@@ -3,7 +3,7 @@
 ## About
 Provides up to date test information for lab / clinical staff. The aim of the database is to save time/money by reducing the delay caused by lack of information e.g:
 
-#### Problem 1:
+### Problem 1:
 
 A request comes into the lab asking for a test called 'Coeliac Screen'. We don't recognise the name of this test so we're unsure of how to process it (it appears on our system as an 'ATTG').
 
@@ -20,7 +20,7 @@ With the database:
 + If no matches found, follow the pre-database process but add the alias to the database once we've found the answer. This will save time for anyone that runs into the same issue in the future.
 + Answers have been validated by senior staff members
 
-#### Problem 2:
+### Problem 2:
 
 Phlebotomist has been asked to take blood from a patient, but they are not sure which container to use.
 
