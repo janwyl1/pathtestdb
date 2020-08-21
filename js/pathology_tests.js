@@ -339,7 +339,7 @@ var pathTestsDb = (function () {
    * @description Initialize app by fetching data
    */
   function init() {
-    fetchData('../data/pathology_tests.json');
+    fetchData('./data/pathology_tests.json');
   }
   init();
 
