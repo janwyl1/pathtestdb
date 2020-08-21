@@ -38,8 +38,41 @@ With the database:
 + Type the code, name or alias into the database
 + Any potential matches will show up
 
-## Tests
-Visit /test/testrunner.html for tests
+## Instructions
+
+#### Clone the repo 
+```
+git clone https://github.com/janwyl1/pathtestdb.git
+```
+
+Or download and extract the zip file
+
+#### Start the development server
+```
+npm start
+```
+
+#### Run tests
+Start the development server and visit localhost:3000/test/testrunner.html for browser based tests
+
+#### Generate Documentation
+```
+jsdoc js/pathology_tests.js
+```
+Docs are saved in 'out' folder by default
+
+#### Gulp tasks
+```
+gulp
+```
+Default task. Creates production build (saved to 'dist' folder), starts the server, opens the browser to localhost:3000, and watches for changes to HTML/CSS/JS files. You can run each of these individually e.g. 
+
+```
+gulp build
+gulp startServer
+gulp open
+gulp watch
+```
 
 ##  Credits
 + Developers - James and Kevin 
